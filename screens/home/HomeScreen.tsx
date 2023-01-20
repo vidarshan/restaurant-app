@@ -891,7 +891,9 @@ const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
       {/* add key */}
       <FlatList
         data={data}
-        renderItem={({item}) => <CustomCard item={item} />}
+        renderItem={({item}) => (
+          <CustomCard navigation={navigation} item={item} />
+        )}
       />
     </SafeAreaView>
   );

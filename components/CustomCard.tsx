@@ -5,9 +5,9 @@ import {ICustomCard} from '../models/ICustomCard';
 import {customCardStyles} from '../styles/CustomCard';
 import {homeStyles} from '../styles/HomeScreen';
 
-const CustomCard: React.FC<ICustomCard> = ({item}) => {
+const CustomCard: React.FC<ICustomCard> = ({item, navigation}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => navigation.navigate('Meal')}>
       <View style={customCardStyles().item}>
         <Image style={customCardStyles().image} source={item.image} />
         <View style={customCardStyles().detailsContainer}>
