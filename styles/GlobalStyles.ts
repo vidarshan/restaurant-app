@@ -1,0 +1,9 @@
+export const bgColor = '#000000';
+export const defaultFontWeight = '500';
+export const fontColor = '#EEEEEE';
+export const accentColor = '#A7D129';
+export const viewPadding = 30;
+export const rowTopMargin = 20;
+export const largerFontSize = 16;
+export const midFontSize = 14;
+export const smallerFontSize = 12;

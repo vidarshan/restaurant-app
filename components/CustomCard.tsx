@@ -7,7 +7,7 @@ import {homeStyles} from '../styles/HomeScreen';
 
 const CustomCard: React.FC<ICustomCard> = ({item, navigation}) => {
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Meal')}>
+    <TouchableOpacity onPress={() => navigation.navigate('Meal', {meal: item})}>
       <View style={customCardStyles().item}>
         <Image style={customCardStyles().image} source={item.image} />
         <View style={customCardStyles().detailsContainer}>

@@ -5,14 +5,13 @@ import {IHomeScreenProps} from '../../models/IHomeScreen';
 import {homeStyles} from '../../styles/HomeScreen';
 
 const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
-  console.log(navigation);
   const data = [
     {
       name: 'Whopper',
       sizes: [
         {size: '2 Ounce', content: 1, price: 1.0},
         {size: '3 Ounce', content: 1, price: 2.0},
-        {size: '3 Ounce', content: 1, price: 3.0},
+        {size: '4 Ounce', content: 1, price: 3.0},
       ],
       addons: [
         {addOnName: '🥗Salad', addOnPrice: 0.25},
