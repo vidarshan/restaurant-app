@@ -88,7 +88,10 @@ const MealScreen: React.FC<IMealScreen> = ({navigation, route}) => {
               <Icon name="minus" size={16} color={bgColor} />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity disabled={true} style={mealScreenStyles.btn}>
+          <TouchableOpacity
+            // disabled={true}
+            style={mealScreenStyles.btn}
+            onPress={() => navigation.navigate('Oven')}>
             <Text style={mealScreenStyles.btnText}>Add to Oven</Text>
             <Text style={mealScreenStyles.btnText}>{`$${price}`}</Text>
           </TouchableOpacity>

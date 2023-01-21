@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
+import {cardbgColor, fontColor} from './GlobalStyles';
 
 export const customCardStyles = (props?: any) =>
   StyleSheet.create({
     item: {
-      backgroundColor: 'white',
+      backgroundColor: cardbgColor,
       alignItems: 'center',
       justifyContent: 'flex-start',
       flex: 1,
@@ -60,7 +61,7 @@ export const customCardStyles = (props?: any) =>
     priceText: {
       fontSize: 18,
       fontWeight: '500',
-      color: '#686868',
+      color: fontColor,
       marginTop: 4,
     },
   });

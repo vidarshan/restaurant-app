@@ -7,3 +7,4 @@ export const rowTopMargin = 20;
 export const largerFontSize = 16;
 export const midFontSize = 14;
 export const smallerFontSize = 12;
+export const cardbgColor = '#272828';

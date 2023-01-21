@@ -1,8 +1,18 @@
 import React from 'react';
-import {FlatList, SafeAreaView} from 'react-native';
+import {
+  FlatList,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  View,
+} from 'react-native';
 import CustomCard from '../../components/CustomCard';
 import {IHomeScreenProps} from '../../models/IHomeScreen';
+import {cardbgColor} from '../../styles/GlobalStyles';
 import {homeStyles} from '../../styles/HomeScreen';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
   const data = [
@@ -885,9 +895,68 @@ const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
     },
   ];
 
+  const categories = [
+    'Pizza',
+    'Chicken',
+    'Taco',
+    'Burrito',
+    'Burger',
+    'Sandwitch',
+  ];
+
   return (
     <SafeAreaView style={homeStyles().container}>
       {/* add key */}
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          height: 'auto',
+          backgroundColor: cardbgColor,
+          borderRadius: 8,
+          margin: 5,
+          paddingLeft: 10,
+        }}>
+        <Icon
+          style={{backgroundColor: cardbgColor}}
+          name="search"
+          size={12}
+          color="white"
+        />
+        <TextInput
+          placeholderTextColor="white"
+          style={{
+            flex: 1,
+            backgroundColor: cardbgColor,
+            borderRadius: 8,
+            padding: 10,
+            color: 'white',
+          }}
+          placeholder="Search for meals..."
+        />
+      </View>
+      <View>
+        <ScrollView
+          horizontal
+          style={{
+            flexDirection: 'row',
+            marginTop: 10,
+            marginBottom: 10,
+            overflow: 'scroll',
+          }}>
+          {categories.map(category => (
+            <TouchableHighlight
+              style={{
+                backgroundColor: cardbgColor,
+                padding: 8,
+                margin: 3,
+                borderRadius: 8,
+              }}>
+              <Text style={{color: 'white'}}>{category}</Text>
+            </TouchableHighlight>
+          ))}
+        </ScrollView>
+      </View>
       <FlatList
         data={data}
         renderItem={({item}) => (

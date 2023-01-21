@@ -1,10 +1,12 @@
 import {StyleSheet} from 'react-native';
+import {bgColor, fontColor} from './GlobalStyles';
 
 export const homeStyles = (props?: any) =>
   StyleSheet.create({
     container: {
       flex: 1,
       marginTop: 0,
+      backgroundColor: bgColor,
     },
     item: {
       backgroundColor: 'white',
@@ -22,7 +24,7 @@ export const homeStyles = (props?: any) =>
     itemText: {
       fontSize: 16,
       fontWeight: '500',
-      color: '#686868',
+      color: fontColor,
     },
     image: {
       width: 60,
