@@ -16,6 +16,12 @@ const CustomButton: React.FC<ICustomButton> = ({
           style={customButtonStyles.defaultBtn}>
           <Text style={customButtonStyles.defaultText}>{title}</Text>
         </TouchableOpacity>
+      ) : type === 'danger' ? (
+        <TouchableOpacity
+          onPress={onPress}
+          style={customButtonStyles.defaultBtn}>
+          <Text style={customButtonStyles.defaultText}>{title}</Text>
+        </TouchableOpacity>
       ) : (
         <TouchableOpacity style={customButtonStyles.invertedBtn}>
           <Text style={customButtonStyles.invertedText}>{title}</Text>

@@ -1,9 +1,16 @@
 import {StyleSheet} from 'react-native';
-import {accentColor, bgColor} from './GlobalStyles';
+import {accentColor, bgColor, dangerColor} from './GlobalStyles';
 
 export const customButtonStyles = StyleSheet.create({
   defaultBtn: {
     backgroundColor: accentColor,
+    borderRadius: 8,
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginTop: 10,
+  },
+  dangerBtn: {
+    backgroundColor: dangerColor,
     borderRadius: 8,
     paddingTop: 10,
     paddingBottom: 10,

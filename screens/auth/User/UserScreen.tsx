@@ -1,13 +1,7 @@
 import React from 'react';
 import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import OrderCard from '../../../components/OrderCard';
-import {
-  bgColor,
-  cardbgColor,
-  dangerColor,
-  defaultBorderRadius,
-  fontColor,
-} from '../../../styles/GlobalStyles';
+import {accountStyles} from '../../../styles/AccountScreen';
 import {ovenScreenStyles} from '../../../styles/OvenScreen';
 
 const UserScreen = () => {
@@ -24,54 +18,19 @@ const UserScreen = () => {
   ];
 
   return (
-    <View style={{backgroundColor: bgColor, minHeight: '100%'}}>
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: 60,
-            width: 60,
-            borderRadius: 50,
-            backgroundColor: '#f27a7a',
-            marginTop: 10,
-            marginBottom: 20,
-          }}>
-          <Text style={{color: fontColor, fontSize: 24}}>A</Text>
+    <View style={accountStyles.viewBg}>
+      <View style={accountStyles.viewContent}>
+        <View style={accountStyles.avatarContainer}>
+          <Text style={accountStyles.avatarText}>A</Text>
         </View>
       </View>
-
-      <TextInput
-        style={{
-          backgroundColor: cardbgColor,
-          borderRadius: 8,
-          padding: 10,
-          margin: 5,
-          color: 'white',
-        }}
-        placeholder="Email"
-      />
-      <TextInput
-        style={{
-          backgroundColor: cardbgColor,
-          borderRadius: 8,
-          padding: 10,
-          margin: 5,
-          color: 'white',
-        }}
-        placeholder="Password"
-      />
-      <TouchableOpacity
-        style={{
-          backgroundColor: dangerColor,
-          margin: 5,
-          padding: 10,
-          borderRadius: defaultBorderRadius,
-        }}>
+      <TextInput style={accountStyles.noFlexInput} placeholder="Email" />
+      <TextInput style={accountStyles.noFlexInput} placeholder="Password" />
+      <TouchableOpacity style={accountStyles.dangerBtn}>
         <Text style={ovenScreenStyles.checkoutText}>Logout</Text>
       </TouchableOpacity>
-      <Text style={{color: 'white'}}>Recent Orders</Text>
-      <View style={{height: 300}}>
+      <Text style={accountStyles.recentTitle}>Recent Orders</Text>
+      <View>
         <FlatList
           data={orders}
           renderItem={({item}) => <OrderCard item={item} key={item.id} />}
