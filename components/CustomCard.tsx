@@ -15,16 +15,11 @@ const CustomCard: React.FC<ICustomCard> = ({item, navigation}) => {
           <View style={customCardStyles().veganContainer}>
             <Text style={homeStyles().itemText}>{item.name}</Text>
             <View style={homeStyles().veganIconContainer}>
-              <View
-                style={
-                  homeStyles(item.vegan ? 'green' : 'red').veganIconBorder
-                }>
-                <Icon
-                  name="circle"
-                  size={8}
-                  color={item.vegan ? 'green' : 'red'}
-                />
-              </View>
+              <Icon
+                name="circle"
+                size={8}
+                color={item.vegan ? 'green' : 'red'}
+              />
             </View>
           </View>
           <View style={customCardStyles().ratingContainer}>

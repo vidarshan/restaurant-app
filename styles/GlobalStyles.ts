@@ -8,3 +8,6 @@ export const largerFontSize = 16;
 export const midFontSize = 14;
 export const smallerFontSize = 12;
 export const cardbgColor = '#272828';
+export const dangerColor = '#B50e25';
+export const warningColor = '#Ea5605';
+export const defaultBorderRadius = 8;
