@@ -10,4 +10,17 @@ export const smallerFontSize = 12;
 export const cardbgColor = '#272828';
 export const dangerColor = '#B50e25';
 export const warningColor = '#Ea5605';
+export const warningColor2 = '#Ea9e05';
 export const defaultBorderRadius = 8;
+export const defaultTextInputStyles = {
+  flex: 1,
+  backgroundColor: cardbgColor,
+  borderRadius: 8,
+  paddingLeft: 10,
+  paddingRight: 10,
+  paddingTop: 20,
+  paddingBottom: 20,
+  color: 'white',
+  marginTop: 10,
+  marginBottom: 10,
+};

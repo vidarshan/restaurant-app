@@ -9,5 +9,5 @@ export interface IOrder {
 }
 export interface IOrderScreen {
   item: IOrder;
-  navigation: any;
+  navigation?: any;
 }

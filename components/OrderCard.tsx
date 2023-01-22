@@ -1,14 +1,37 @@
 import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {IOrderScreen} from '../models/IOrderCard';
-import {dangerColor, fontColor} from '../styles/GlobalStyles';
+import {
+  accentColor,
+  cardbgColor,
+  dangerColor,
+  defaultBorderRadius,
+  fontColor,
+} from '../styles/GlobalStyles';
 import {ovenScreenStyles} from '../styles/OvenScreen';
 
 const OrderCard: React.FC<IOrderScreen> = ({item}) => {
   return (
     <TouchableOpacity>
       <View style={ovenScreenStyles.item}>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: '#030303',
+            borderRadius: defaultBorderRadius,
+            padding: 5,
+            marginBottom: 10,
+          }}>
+          <Icon
+            style={{marginRight: 5}}
+            name="circle"
+            size={8}
+            color={accentColor}
+          />
+          <Text style={{color: fontColor}}>Delivered</Text>
+        </View>
         <View
           style={{
             flex: 1,

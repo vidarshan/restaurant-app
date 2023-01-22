@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 import {
   accentColor,
   bgColor,
+  cardbgColor,
   defaultFontWeight,
   fontColor,
   largerFontSize,
@@ -64,7 +65,7 @@ export const mealScreenStyles = StyleSheet.create({
     marginTop: rowTopMargin,
   },
   optionBtn: {
-    backgroundColor: '#3A4750',
+    backgroundColor: cardbgColor,
     padding: 10,
     borderRadius: 8,
     flexDirection: 'row',
