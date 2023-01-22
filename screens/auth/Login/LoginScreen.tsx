@@ -4,13 +4,14 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import CustomButton from '../../../components/CustomButton';
 import CustomHeader from '../../../components/CustomHeader';
 import CustomInput from '../../../components/CustomInput';
+import {ILoginScreen} from '../../../models/ILoginScreen';
 import {authStyles} from '../../../styles/AuthScreens';
-import {viewPadding, warningColor} from '../../../styles/GlobalStyles';
+import {warningColor} from '../../../styles/GlobalStyles';
 
-const LoginScreen = () => {
+const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
   return (
     <SafeAreaView style={authStyles.authView}>
-      <View style={{padding: viewPadding}}>
+      <View style={authStyles.authViewPadding}>
         <Icon
           style={authStyles.iconSpacing}
           name="hamburger"
@@ -21,7 +22,11 @@ const LoginScreen = () => {
         <CustomInput placeholder="Email" />
         <CustomInput placeholder="Password" />
         <CustomButton title="Login" type="default" />
-        <CustomButton title="New User?" type="inverted" />
+        <CustomButton
+          title="New User?"
+          type="inverted"
+          onPress={() => navigation.navigate('Register')}
+        />
       </View>
     </SafeAreaView>
   );

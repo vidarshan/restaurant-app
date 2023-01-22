@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {bgColor} from './GlobalStyles';
+import {bgColor, viewPadding} from './GlobalStyles';
 
 export const authStyles = StyleSheet.create({
   authView: {
@@ -10,5 +10,8 @@ export const authStyles = StyleSheet.create({
   },
   iconSpacing: {
     marginBottom: 10,
+  },
+  authViewPadding: {
+    padding: viewPadding,
   },
 });

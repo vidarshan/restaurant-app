@@ -1,123 +1,33 @@
 import React from 'react';
-import {
-  Text,
-  SafeAreaView,
-  View,
-  Button,
-  TextInput,
-  Touchable,
-  TouchableOpacity,
-} from 'react-native';
+import {SafeAreaView, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {
-  accentColor,
-  bgColor,
-  cardbgColor,
-  largerFontSize,
-  viewPadding,
-  warningColor,
-} from '../../../styles/GlobalStyles';
+import CustomButton from '../../../components/CustomButton';
+import CustomHeader from '../../../components/CustomHeader';
+import CustomInput from '../../../components/CustomInput';
+import {IRegisterScreen} from '../../../models/IRegisterScreen';
+import {authStyles} from '../../../styles/AuthScreens';
+import {warningColor} from '../../../styles/GlobalStyles';
 
-const RegisterScreen = ({navigation}) => {
+const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
   return (
-    <SafeAreaView
-      style={{
-        flexDirection: 'column',
-        justifyContent: 'center',
-        flex: 1,
-        backgroundColor: bgColor,
-      }}>
-      <View style={{padding: viewPadding}}>
+    <SafeAreaView style={authStyles.authView}>
+      <View style={authStyles.authViewPadding}>
         <Icon
-          style={{marginBottom: 10}}
+          style={authStyles.iconSpacing}
           name="fire"
           size={60}
           color={warningColor}
         />
-        <Text
-          style={{
-            color: accentColor,
-            fontSize: 20,
-            marginBottom: 10,
-            fontWeight: '600',
-          }}>
-          Create new account
-        </Text>
-        <TextInput
-          style={{
-            flex: 1,
-            backgroundColor: cardbgColor,
-            borderRadius: 8,
-            paddingLeft: 10,
-            paddingRight: 10,
-            paddingTop: 20,
-            paddingBottom: 20,
-            color: 'white',
-            marginTop: 10,
-            marginBottom: 10,
-          }}
-          placeholder="Email"
-        />
-        <TextInput
-          style={{
-            flex: 1,
-            backgroundColor: cardbgColor,
-            borderRadius: 8,
-            paddingLeft: 10,
-            paddingRight: 10,
-            paddingTop: 20,
-            paddingBottom: 20,
-            color: 'white',
-            marginTop: 10,
-            marginBottom: 10,
-          }}
-          placeholder="Password"
-        />
-        <TextInput
-          style={{
-            flex: 1,
-            backgroundColor: cardbgColor,
-            borderRadius: 8,
-            paddingLeft: 10,
-            paddingRight: 10,
-            paddingTop: 20,
-            paddingBottom: 20,
-            color: 'white',
-            marginTop: 10,
-            marginBottom: 10,
-          }}
-          placeholder="Confirm Password"
-        />
-        <TouchableOpacity
-          style={{
-            backgroundColor: accentColor,
-            borderRadius: 8,
-            paddingTop: 10,
-            paddingBottom: 10,
-            marginTop: 10,
-          }}>
-          <Text
-            style={{color: bgColor, textAlign: 'center', fontWeight: '600'}}>
-            Register
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        <CustomHeader title="Create new account" />
+        <CustomInput placeholder="Email" />
+        <CustomInput placeholder="Password" />
+        <CustomInput placeholder="Confirm Password" />
+        <CustomButton type="default" title="Register" />
+        <CustomButton
+          type="inverted"
+          title="Have an account?"
           onPress={() => navigation.navigate('Login')}
-          style={{
-            borderRadius: 8,
-            paddingTop: 10,
-            paddingBottom: 10,
-            marginTop: 10,
-          }}>
-          <Text
-            style={{
-              color: accentColor,
-              textAlign: 'center',
-              fontWeight: '600',
-            }}>
-            Have an account?
-          </Text>
-        </TouchableOpacity>
+        />
       </View>
     </SafeAreaView>
   );
