@@ -12,6 +12,7 @@ export const dangerColor = '#B50e25';
 export const warningColor = '#Ea5605';
 export const warningColor2 = '#Ea9e05';
 export const defaultBorderRadius = 8;
+export const chipBackgroundColor = '#030303';
 export const defaultTextInputStyles = {
   flex: 1,
   backgroundColor: cardbgColor,

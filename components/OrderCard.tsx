@@ -2,68 +2,40 @@ import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {IOrderScreen} from '../models/IOrderCard';
-import {
-  accentColor,
-  cardbgColor,
-  dangerColor,
-  defaultBorderRadius,
-  fontColor,
-} from '../styles/GlobalStyles';
+import {accentColor, dangerColor} from '../styles/GlobalStyles';
+import {orderScreenStyles} from '../styles/OrderScreen';
 import {ovenScreenStyles} from '../styles/OvenScreen';
 
-const OrderCard: React.FC<IOrderScreen> = ({item}) => {
+const OrderCard: React.FC<IOrderScreen> = ({
+  item = {
+    id: '',
+    name: '',
+    size: '',
+    qty: 1,
+    selectedAddOns: [],
+    price: 0,
+    image: '',
+  },
+}) => {
   return (
     <TouchableOpacity>
       <View style={ovenScreenStyles.item}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            backgroundColor: '#030303',
-            borderRadius: defaultBorderRadius,
-            padding: 5,
-            marginBottom: 10,
-          }}>
+        <View style={orderScreenStyles.chipRow}>
           <Icon
-            style={{marginRight: 5}}
+            style={orderScreenStyles.iconMargin}
             name="circle"
             size={8}
             color={accentColor}
           />
-          <Text style={{color: fontColor}}>Delivered</Text>
+          <Text style={orderScreenStyles.chipText}>Delivered</Text>
         </View>
-        <View
-          style={{
-            flex: 1,
-            width: '100%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
-          <Image
-            style={{
-              width: 40,
-              resizeMode: 'contain',
-              height: 40,
-              marginRight: 10,
-            }}
-            source={item.image}
-          />
-          <View
-            style={{
-              flexDirection: 'row',
-              flex: 1,
-              justifyContent: 'space-between',
-              alignItems: 'center',
-            }}>
+        <View style={orderScreenStyles.imageRow}>
+          <Image style={orderScreenStyles.img} source={item.image} />
+          <View style={orderScreenStyles.detailsRow}>
             <View>
-              <Text style={{fontSize: 14, color: fontColor, fontWeight: '500'}}>
-                {item.name}
-              </Text>
-              <Text style={{fontSize: 14, color: fontColor, fontWeight: '500'}}>
-                {item.size}
-              </Text>
-              <Text style={{fontSize: 14, color: fontColor, fontWeight: '500'}}>
+              <Text style={orderScreenStyles.detailText}>{item.name}</Text>
+              <Text style={orderScreenStyles.detailText}>{item.size}</Text>
+              <Text style={orderScreenStyles.detailText}>
                 {item.qty} x ${item.price}
               </Text>
             </View>
@@ -73,16 +45,10 @@ const OrderCard: React.FC<IOrderScreen> = ({item}) => {
           </View>
         </View>
 
-        <View style={{flexDirection: 'row', marginTop: 10}}>
+        <View style={orderScreenStyles.addOnRow}>
           {item.selectedAddOns.map((addOn, key) => (
-            <View
-              style={{
-                backgroundColor: '#3c3c3c',
-                marginRight: 10,
-                padding: 5,
-                borderRadius: 8,
-              }}>
-              <Text style={{color: 'white'}} key={key}>
+            <View style={orderScreenStyles.addOn}>
+              <Text style={orderScreenStyles.addOnText} key={key}>
                 {addOn}
               </Text>
             </View>

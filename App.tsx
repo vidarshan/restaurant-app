@@ -17,7 +17,7 @@ import UserScreen from './screens/auth/User/UserScreen';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
-  const token = false;
+  const token = true;
 
   return (
     <NavigationContainer ref={navigationRef}>

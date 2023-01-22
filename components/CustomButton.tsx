@@ -2,7 +2,6 @@ import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import {ICustomButton} from '../models/ICustomButton';
 import {customButtonStyles} from '../styles/CustomButton';
-import {bgColor} from '../styles/GlobalStyles';
 
 const CustomButton: React.FC<ICustomButton> = ({
   title = 'Button',
@@ -15,10 +14,7 @@ const CustomButton: React.FC<ICustomButton> = ({
         <TouchableOpacity
           onPress={onPress}
           style={customButtonStyles.defaultBtn}>
-          <Text
-            style={{color: bgColor, textAlign: 'center', fontWeight: '600'}}>
-            {title}
-          </Text>
+          <Text style={customButtonStyles.defaultText}>{title}</Text>
         </TouchableOpacity>
       ) : (
         <TouchableOpacity style={customButtonStyles.invertedBtn}>

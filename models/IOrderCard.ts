@@ -8,6 +8,6 @@ export interface IOrder {
   image: any;
 }
 export interface IOrderScreen {
-  item: IOrder;
+  item?: IOrder;
   navigation?: any;
 }
