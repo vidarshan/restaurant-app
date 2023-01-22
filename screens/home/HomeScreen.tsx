@@ -907,16 +907,7 @@ const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
   return (
     <SafeAreaView style={homeStyles().container}>
       {/* add key */}
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          height: 'auto',
-          backgroundColor: cardbgColor,
-          borderRadius: 8,
-          margin: 5,
-          paddingLeft: 10,
-        }}>
+      <View style={homeStyles().searchListContainer}>
         <Icon
           style={{backgroundColor: cardbgColor}}
           name="search"
@@ -925,42 +916,23 @@ const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
         />
         <TextInput
           placeholderTextColor="white"
-          style={{
-            flex: 1,
-            backgroundColor: cardbgColor,
-            borderRadius: 8,
-            padding: 10,
-            color: 'white',
-          }}
+          style={homeStyles().searchBar}
           placeholder="Search for meals..."
         />
       </View>
       <View>
-        <ScrollView
-          horizontal
-          style={{
-            flexDirection: 'row',
-            marginTop: 10,
-            marginBottom: 10,
-            overflow: 'scroll',
-          }}>
+        <ScrollView horizontal style={homeStyles().scrollCategories}>
           {categories.map(category => (
-            <TouchableHighlight
-              style={{
-                backgroundColor: cardbgColor,
-                padding: 8,
-                margin: 3,
-                borderRadius: 8,
-              }}>
-              <Text style={{color: 'white'}}>{category}</Text>
+            <TouchableHighlight style={homeStyles().chip}>
+              <Text style={homeStyles().chipText}>{category}</Text>
             </TouchableHighlight>
           ))}
         </ScrollView>
       </View>
       <FlatList
         data={data}
-        renderItem={({item}) => (
-          <CustomCard navigation={navigation} item={item} />
+        renderItem={({item, index}) => (
+          <CustomCard key={index} navigation={navigation} item={item} />
         )}
       />
     </SafeAreaView>

@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {bgColor, fontColor} from './GlobalStyles';
+import {bgColor, cardbgColor, fontColor} from './GlobalStyles';
 
 export const homeStyles = (props?: any) =>
   StyleSheet.create({
@@ -8,6 +8,35 @@ export const homeStyles = (props?: any) =>
       marginTop: 0,
       backgroundColor: bgColor,
     },
+    searchListContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      height: 'auto',
+      backgroundColor: cardbgColor,
+      borderRadius: 8,
+      margin: 5,
+      paddingLeft: 10,
+    },
+    searchBar: {
+      flex: 1,
+      backgroundColor: cardbgColor,
+      borderRadius: 8,
+      padding: 10,
+      color: 'white',
+    },
+    scrollCategories: {
+      flexDirection: 'row',
+      marginTop: 10,
+      marginBottom: 10,
+      overflow: 'scroll',
+    },
+    chip: {
+      backgroundColor: cardbgColor,
+      padding: 8,
+      margin: 3,
+      borderRadius: 8,
+    },
+    chipText: {color: fontColor},
     item: {
       backgroundColor: 'white',
       alignItems: 'center',

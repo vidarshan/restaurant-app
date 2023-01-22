@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
-import {ICompleteScreen} from '../../models/ICompleteScreen';
-import {fontColor} from '../../styles/GlobalStyles';
+import {IOrderScreen} from '../../models/IOrderCard';
+import {orderScreenStyles} from '../../styles/OrderScreen';
 
-const OrderScreen: React.FC<ICompleteScreen> = ({navigation}) => {
+const OrderScreen: React.FC<IOrderScreen> = ({navigation}) => {
   return (
-    <View style={{minHeight: '100%', backgroundColor: fontColor}}>
+    <View style={orderScreenStyles.container}>
       <Text>OrderScreen</Text>
       <TouchableOpacity onPress={() => navigation.navigate('OrderComplete')}>
         <Text>Completes</Text>
