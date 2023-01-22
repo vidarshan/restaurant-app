@@ -49,4 +49,5 @@ export const orderScreenStyles = StyleSheet.create({
     borderRadius: 8,
   },
   addOnText: {color: fontColor},
+  headerText: {color: fontColor, margin: 5, fontWeight: '500', fontSize: 18},
 });

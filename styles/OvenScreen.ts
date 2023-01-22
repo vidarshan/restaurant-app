@@ -32,4 +32,25 @@ export const ovenScreenStyles = StyleSheet.create({
     fontWeight: defaultFontWeight,
     textAlign: 'center',
   },
+  iconMargin: {marginRight: 8},
+  paymentOption: {
+    backgroundColor: cardbgColor,
+    padding: 5,
+    borderRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 10,
+  },
+  input: {
+    backgroundColor: cardbgColor,
+    borderRadius: 8,
+    padding: 10,
+    margin: 5,
+    color: 'white',
+  },
+  paymentOptionsRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    margin: 5,
+  },
 });
