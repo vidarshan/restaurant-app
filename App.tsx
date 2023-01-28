@@ -14,92 +14,100 @@ import * as RootNavigation from './RootNavigation';
 import OrderScreen from './screens/other/OrderScreen';
 import OrderComplete from './screens/other/OrderCompleteScreen';
 import UserScreen from './screens/auth/User/UserScreen';
+import {Provider} from 'react-redux';
+import {store} from './redux/store';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
   const token = true;
 
   return (
-    <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator
-        initialRouteName="Register"
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: bgColor,
-          },
-          headerTintColor: accentColor,
-          headerTitleStyle: {
-            color: accentColor,
-            fontWeight: defaultFontWeight,
-          },
-        }}>
-        {token ? (
-          <>
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{
-                title: 'Meals',
-                headerLeft: () => {
-                  return (
-                    <TouchableOpacity
-                      onPress={() => RootNavigation.navigate('User', {})}>
-                      <Icon name="user-alt" size={16} color={accentColor} />
-                    </TouchableOpacity>
-                  );
-                },
-                headerRight: () => {
-                  return (
-                    <TouchableOpacity
-                      onPress={() => RootNavigation.navigate('Oven', {})}>
-                      <Icon name="shopping-bag" size={16} color={accentColor} />
-                    </TouchableOpacity>
-                  );
-                },
-              }}
-            />
-            <Stack.Screen
-              name="Meal"
-              component={MealScreen}
-              options={{title: 'Customize'}}
-            />
-            <Stack.Screen
-              name="Oven"
-              component={OvenScreen}
-              options={{title: 'Oven'}}
-            />
-            <Stack.Screen
-              name="Order"
-              component={OrderScreen}
-              options={{title: 'Order'}}
-            />
-            <Stack.Screen
-              options={{headerShown: false, gestureEnabled: false}}
-              name="OrderComplete"
-              component={OrderComplete}
-            />
-            <Stack.Screen
-              name="User"
-              component={UserScreen}
-              options={{title: 'Account'}}
-            />
-          </>
-        ) : (
-          <>
-            <Stack.Screen
-              name="Register"
-              component={RegisterScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Login"
-              component={LoginScreen}
-              options={{headerShown: false}}
-            />
-          </>
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer ref={navigationRef}>
+        <Stack.Navigator
+          initialRouteName="Register"
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: bgColor,
+            },
+            headerTintColor: accentColor,
+            headerTitleStyle: {
+              color: accentColor,
+              fontWeight: defaultFontWeight,
+            },
+          }}>
+          {token ? (
+            <>
+              <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{
+                  title: 'Meals',
+                  headerLeft: () => {
+                    return (
+                      <TouchableOpacity
+                        onPress={() => RootNavigation.navigate('User', {})}>
+                        <Icon name="user-alt" size={16} color={accentColor} />
+                      </TouchableOpacity>
+                    );
+                  },
+                  headerRight: () => {
+                    return (
+                      <TouchableOpacity
+                        onPress={() => RootNavigation.navigate('Oven', {})}>
+                        <Icon
+                          name="shopping-bag"
+                          size={16}
+                          color={accentColor}
+                        />
+                      </TouchableOpacity>
+                    );
+                  },
+                }}
+              />
+              <Stack.Screen
+                name="Meal"
+                component={MealScreen}
+                options={{title: 'Customize'}}
+              />
+              <Stack.Screen
+                name="Oven"
+                component={OvenScreen}
+                options={{title: 'Oven'}}
+              />
+              <Stack.Screen
+                name="Order"
+                component={OrderScreen}
+                options={{title: 'Order'}}
+              />
+              <Stack.Screen
+                options={{headerShown: false, gestureEnabled: false}}
+                name="OrderComplete"
+                component={OrderComplete}
+              />
+              <Stack.Screen
+                name="User"
+                component={UserScreen}
+                options={{title: 'Account'}}
+              />
+            </>
+          ) : (
+            <>
+              <Stack.Screen
+                name="Register"
+                component={RegisterScreen}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen
+                name="Login"
+                component={LoginScreen}
+                options={{headerShown: false}}
+              />
+            </>
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 

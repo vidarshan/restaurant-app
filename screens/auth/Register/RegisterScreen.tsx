@@ -22,7 +22,11 @@ const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
         <CustomInput placeholder="Email" />
         <CustomInput placeholder="Password" />
         <CustomInput placeholder="Confirm Password" />
-        <CustomButton type="default" title="Register" />
+        <CustomButton
+          type="default"
+          title="Register"
+          onPress={() => navigation.navigate('Login')}
+        />
         <CustomButton
           type="inverted"
           title="Have an account?"
