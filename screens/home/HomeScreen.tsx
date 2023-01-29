@@ -15,15 +15,28 @@ import {homeStyles} from '../../styles/HomeScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {RootState} from '../../redux/store';
 import {useDispatch, useSelector} from 'react-redux';
-import {setCategories, setMeals} from '../../redux/meals';
+import {
+  setCategories,
+  setMeals,
+  searchMeals,
+  searchCategory,
+} from '../../redux/meals';
 import {meals as mealsListFromDisk} from '../../data/meals';
 import {categories as categoriesFromDisk} from '../../data/categories';
 
 const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
   const dispatch = useDispatch();
-  const {mealsList, categoriesList} = useSelector(
+  const {mealsList, categoriesList, selectedCategory} = useSelector(
     (state: RootState) => state.mealsList,
   );
+
+  const filterByCategory = (selected: boolean, category: string) => {
+    if (selected) {
+      dispatch(searchCategory('All'));
+    } else {
+      dispatch(searchCategory(category));
+    }
+  };
 
   useEffect(() => {
     dispatch(setMeals(mealsListFromDisk));
@@ -32,7 +45,6 @@ const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
 
   return (
     <SafeAreaView style={homeStyles().container}>
-      {/* add key */}
       <View style={homeStyles().searchListContainer}>
         <Icon
           style={{backgroundColor: cardbgColor}}
@@ -44,13 +56,30 @@ const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
           placeholderTextColor="white"
           style={homeStyles().searchBar}
           placeholder="Search for meals..."
+          onChangeText={search => dispatch(searchMeals(search))}
         />
       </View>
       <View>
         <ScrollView horizontal style={homeStyles().scrollCategories}>
           {categoriesList.map((category: any) => (
-            <TouchableHighlight style={homeStyles().chip}>
-              <Text style={homeStyles().chipText}>{category}</Text>
+            <TouchableHighlight
+              key={category}
+              style={
+                selectedCategory === category
+                  ? homeStyles().selectedChip
+                  : homeStyles().chip
+              }
+              onPress={() =>
+                filterByCategory(selectedCategory === category, category)
+              }>
+              <Text
+                style={
+                  selectedCategory === category
+                    ? homeStyles().selectedChipText
+                    : homeStyles().chipText
+                }>
+                {category}
+              </Text>
             </TouchableHighlight>
           ))}
         </ScrollView>

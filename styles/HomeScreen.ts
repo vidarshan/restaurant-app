@@ -1,7 +1,16 @@
 import {StyleSheet} from 'react-native';
-import {bgColor, cardbgColor, fontColor} from './GlobalStyles';
+import {
+  accentColor,
+  bgColor,
+  cardbgColor,
+  chipBackgroundColor,
+  fontColor,
+} from './GlobalStyles';
 
-export const homeStyles = (props?: any) =>
+export const homeStyles = (
+  chipBgColor?: string,
+  veganIconBorderColor?: string,
+) =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -35,8 +44,19 @@ export const homeStyles = (props?: any) =>
       padding: 8,
       margin: 3,
       borderRadius: 8,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    selectedChip: {
+      backgroundColor: accentColor,
+      padding: 8,
+      margin: 3,
+      borderRadius: 8,
+      flexDirection: 'row',
+      alignItems: 'center',
     },
     chipText: {color: fontColor},
+    selectedChipText: {color: chipBackgroundColor},
     item: {
       backgroundColor: 'white',
       alignItems: 'center',
@@ -67,7 +87,7 @@ export const homeStyles = (props?: any) =>
       alignItems: 'flex-end',
     },
     veganIconBorder: {
-      borderColor: props,
+      borderColor: veganIconBorderColor,
       borderWidth: 1,
       padding: 1,
     },
