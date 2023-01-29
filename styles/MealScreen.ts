@@ -25,7 +25,12 @@ export const mealScreenStyles = StyleSheet.create({
     resizeMode: 'contain',
   },
   title: {fontSize: 24, color: fontColor, fontWeight: '500'},
-  subTitle: {color: fontColor, fontWeight: '600', marginBottom: 10},
+  subTitle: {
+    color: fontColor,
+    fontWeight: '600',
+    marginBottom: 10,
+    marginTop: 10,
+  },
   imgContainer: {flexDirection: 'row', alignItems: 'flex-start'},
   btnText: {
     textAlign: 'center',
@@ -64,17 +69,29 @@ export const mealScreenStyles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: rowTopMargin,
   },
+  optionRow: {
+    flexDirection: 'row',
+    flex: 1,
+    justifyContent: 'space-between',
+  },
   optionBtn: {
     backgroundColor: cardbgColor,
     padding: 10,
     borderRadius: 8,
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    justifyContent: 'center',
+    margin: 5,
+    flex: 1,
   },
   optionText: {
     color: fontColor,
     fontWeight: '500',
+  },
+  optionPriceText: {
+    fontSize: 12,
+    fontWeight: '500',
+    color: fontColor,
   },
   selectedIcon: {
     marginRight: 4,
