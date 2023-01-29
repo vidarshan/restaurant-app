@@ -50,6 +50,10 @@ const MealScreen: React.FC<IMealScreen> = ({navigation, route}) => {
     }
   };
 
+  const addToOven = () => {
+    navigation.navigate('Oven');
+  };
+
   return (
     <ScrollView style={mealScreenStyles.mealScreen}>
       <View style={mealScreenStyles.imgContainer}>
@@ -149,7 +153,7 @@ const MealScreen: React.FC<IMealScreen> = ({navigation, route}) => {
           </View>
           <TouchableOpacity
             style={mealScreenStyles.btn}
-            onPress={() => navigation.navigate('Oven')}>
+            onPress={() => addToOven()}>
             <Text style={mealScreenStyles.btnText}>Add to Oven</Text>
             <Text style={mealScreenStyles.btnText}>{`$${
               itemPrice.current * quantity

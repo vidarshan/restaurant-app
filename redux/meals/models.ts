@@ -1,19 +1,19 @@
-export interface Size {
+export interface ISize {
   size: string;
   content: number;
   price: number;
 }
 
-export interface AddOn {
+export interface IAddOn {
   addOnName: string;
   addOnPrice: number;
 }
 
-export interface Meal {
+export interface IMeal {
   id: string;
   name: string;
-  sizes: Size[];
-  addons: AddOn[];
+  sizes: ISize[];
+  addons: IAddOn[];
   price: number;
   foodType: string;
   image: any;
