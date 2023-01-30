@@ -1,22 +1,25 @@
 import React, {useState, useRef} from 'react';
 import {Image, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {useDispatch} from 'react-redux';
 import {IAddOn} from '../../models/IAddOn';
 import {IMealScreen} from '../../models/IMealScreen';
+import {IOrder} from '../../redux/oven/models';
 import {ISize} from '../../models/ISize';
 import {rowTopMargin, bgColor, accentColor} from '../../styles/GlobalStyles';
 import {mealScreenStyles} from '../../styles/MealScreen';
+import {addToOven as addMealToOven} from '../../redux/oven/index';
 
 const MealScreen: React.FC<IMealScreen> = ({navigation, route}) => {
   const {
     meal: {image, name, description, addons, vegan, sizes, orders},
   } = route.params;
 
+  const dispatch = useDispatch();
   const itemPrice = useRef(sizes[0].price * 1);
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
   const [quantity, setQuantity] = useState(1);
-
   const addAddOns = (newAddOnName: string, newAddOnPrice: number) => {
     let selectedAddOnList = JSON.parse(JSON.stringify(selectedAddOns));
     const currentItemPrice = itemPrice.current;
@@ -51,6 +54,19 @@ const MealScreen: React.FC<IMealScreen> = ({navigation, route}) => {
   };
 
   const addToOven = () => {
+    let ovenObj: IOrder;
+    ovenObj = {
+      id: '',
+      status: 'In Progress',
+      image,
+      name,
+      size: selectedSize.size,
+      addons: selectedAddOns,
+      quantity,
+      price: itemPrice.current,
+    };
+    console.log(ovenObj);
+    dispatch(addMealToOven(ovenObj));
     navigation.navigate('Oven');
   };
 

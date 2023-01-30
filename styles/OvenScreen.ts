@@ -5,6 +5,7 @@ import {
   cardbgColor,
   defaultBorderRadius,
   defaultFontWeight,
+  fontColor,
 } from './GlobalStyles';
 
 export const ovenScreenStyles = StyleSheet.create({
@@ -20,6 +21,12 @@ export const ovenScreenStyles = StyleSheet.create({
     margin: 6,
     padding: 10,
     borderRadius: defaultBorderRadius,
+  },
+  noItemsText: {
+    marginTop: 10,
+    textAlign: 'center',
+    color: accentColor,
+    fontWeight: defaultFontWeight,
   },
   checkoutBtn: {
     backgroundColor: accentColor,
