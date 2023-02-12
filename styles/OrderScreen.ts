@@ -8,13 +8,19 @@ import {
 
 export const orderScreenStyles = StyleSheet.create({
   container: {minHeight: '100%', backgroundColor: bgColor},
+  chipPriceRow: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
   chipRow: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: chipBackgroundColor,
     borderRadius: defaultBorderRadius,
     padding: 5,
-    marginBottom: 10,
   },
   iconMargin: {marginRight: 5},
   chipText: {

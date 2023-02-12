@@ -21,6 +21,12 @@ export const ovenScreenStyles = StyleSheet.create({
     padding: 10,
     borderRadius: defaultBorderRadius,
   },
+  noItemsText: {
+    marginTop: 10,
+    textAlign: 'center',
+    color: accentColor,
+    fontWeight: defaultFontWeight,
+  },
   checkoutBtn: {
     backgroundColor: accentColor,
     margin: 5,

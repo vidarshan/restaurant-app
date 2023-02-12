@@ -1,11 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
-import loginUser from './auth/index';
 import setMeals from './meals';
 import addToOven from './oven';
+import {authReducer} from './auth';
 
 export const store = configureStore({
   reducer: {
-    login: loginUser,
+    auth: authReducer,
     mealsList: setMeals,
     oven: addToOven,
   },

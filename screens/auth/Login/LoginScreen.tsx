@@ -1,22 +1,38 @@
-import React from 'react';
-import {SafeAreaView, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  SafeAreaView,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  View,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {useDispatch, useSelector} from 'react-redux';
-import CustomButton from '../../../components/CustomButton';
 import CustomHeader from '../../../components/CustomHeader';
-import CustomInput from '../../../components/CustomInput';
 import {ILoginScreen} from '../../../models/ILoginScreen';
-import {loginUser} from '../../../redux/auth';
-import {RootState} from '../../../redux/store';
+import {getUser, logInUser} from '../../../redux/auth';
+import {AppDispatch, RootState} from '../../../redux/store';
 import {authStyles} from '../../../styles/AuthScreens';
-import {warningColor} from '../../../styles/GlobalStyles';
+import {customButtonStyles} from '../../../styles/CustomButton';
+import {unselectedStar, warningColor} from '../../../styles/GlobalStyles';
 
 const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
-  const dispatch = useDispatch();
-  const loginState = useSelector((state: RootState) => state.login);
-  console.log('loginState', loginState);
+  const dispatch = useDispatch<AppDispatch>();
+  const loginState = useSelector((state: RootState) => state.auth);
+  const [phone, setPhone] = useState('0771234567');
+  const [password, setPassword] = useState('123456');
+
+  const submitLoginUser = () => {
+    dispatch(logInUser({phone, password}));
+  };
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch, loginState]);
+
   return (
     <SafeAreaView style={authStyles.authView}>
+      {console.log(loginState)}
       <View style={authStyles.authViewPadding}>
         <Icon
           style={authStyles.iconSpacing}
@@ -25,27 +41,35 @@ const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
           color={warningColor}
         />
         <CustomHeader title="Login to your account" />
-        <CustomInput placeholder="Email" />
-        <CustomInput placeholder="Password" />
-        <CustomButton
-          title="Login"
-          type="default"
-          onPress={() =>
-            dispatch(
-              loginUser({
-                username: 'vidarshan',
-                email: 'vidarshanadithya3@gmail.com',
-                phone: '+94771292000',
-                token: 'AdwjffbubEB232bbHBD',
-              }),
-            )
-          }
+        <TextInput
+          editable
+          value={phone}
+          maxLength={40}
+          onChangeText={text => setPhone(text)}
+          placeholder="Phone"
+          style={authStyles.input}
+          placeholderTextColor={unselectedStar}
         />
-        <CustomButton
-          title="New User?"
-          type="inverted"
-          onPress={() => navigation.navigate('Register')}
+        <TextInput
+          editable
+          value={password}
+          maxLength={40}
+          onChangeText={text => setPassword(text)}
+          placeholder="Password"
+          style={authStyles.input}
+          placeholderTextColor={unselectedStar}
         />
+        <TouchableHighlight
+          disabled={phone === '' && password === ''}
+          style={customButtonStyles.defaultBtn}
+          onPress={() => submitLoginUser()}>
+          <Text style={customButtonStyles.defaultText}>Login</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={customButtonStyles.invertedBtn}
+          onPress={() => navigation.navigate('AuthRegister')}>
+          <Text style={customButtonStyles.invertedText}>New User?</Text>
+        </TouchableHighlight>
       </View>
     </SafeAreaView>
   );

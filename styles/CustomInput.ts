@@ -3,14 +3,15 @@ import {cardbgColor, fontColor} from './GlobalStyles';
 
 export const customInput = StyleSheet.create({
   input: {
+    height: 20,
     flex: 1,
-    backgroundColor: cardbgColor,
+    backgroundColor: 'green',
     borderRadius: 8,
     paddingLeft: 10,
     paddingRight: 10,
     paddingTop: 20,
     paddingBottom: 20,
-    color: fontColor,
+    color: 'black',
     marginTop: 10,
     marginBottom: 10,
   },
