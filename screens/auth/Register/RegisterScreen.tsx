@@ -27,10 +27,10 @@ const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
 
   const submitRegisterUser = () => {
     dispatch(registerUser({username, phone, password, confirmPassword}));
-    // setUsername('');
-    // setPhone('');
-    // setPassword('');
-    // setConfirmPassword('');
+    setUsername('');
+    setPhone('');
+    setPassword('');
+    setConfirmPassword('');
   };
   useEffect(() => {
     dispatch(setInitialUsers());
