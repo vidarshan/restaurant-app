@@ -7,6 +7,7 @@ import {
   IExistingUserDetails,
   AuthInitialState,
   LogInUserPayload,
+  RegisterUserPayload,
 } from './models';
 
 const initialState = {
@@ -97,6 +98,7 @@ export const registerUser = createAsyncThunk(
       const id = uuid.v4();
       const userExists = await ifUserExists(userInfo.phone);
       if (userExists?.length < 1) {
+        const userToken = generateToken(20);
         mutableUsers.push({
           id,
           username: userInfo.username,
@@ -104,12 +106,18 @@ export const registerUser = createAsyncThunk(
           password: userInfo.password,
         });
         await AsyncStorage.setItem('@users', JSON.stringify(mutableUsers));
-        // state.user = {
-        //   id,
-        //   username: userInfo.username,
-        //   phone: userInfo.phone,
-        //   token: 'logged',
-        // };
+        return {
+          ...state.auth.user,
+          id,
+          username: userInfo.username,
+          phone: userInfo.phone,
+          password: userInfo.password,
+          token: userToken,
+        };
+      } else {
+        return {
+          error: 'User account already exists',
+        };
       }
     }
   },
@@ -158,10 +166,21 @@ export const authSlice = createSlice({
       .addCase(registerUser.pending, state => {
         state.loading = false;
       })
-      .addCase(registerUser.fulfilled, (state, {payload}) => {
-        state.loading = false;
-        state.users = payload;
-      })
+      .addCase(
+        registerUser.fulfilled,
+        (state, {payload}: PayloadAction<RegisterUserPayload>) => {
+          state.loading = false;
+          if (!payload.error) {
+            state.loading = false;
+            state.user.id = payload.id;
+            state.user.username = payload.username;
+            state.user.phone = payload.phone;
+            state.user.token = payload.token;
+          } else {
+            state.error = payload.error;
+          }
+        },
+      )
       .addCase(registerUser.rejected, state => {
         state.loading;
       })

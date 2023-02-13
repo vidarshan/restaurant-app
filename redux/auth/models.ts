@@ -6,6 +6,14 @@ export interface LogInUserPayload {
   error: string;
 }
 
+export interface RegisterUserPayload {
+  id: string;
+  username: string;
+  phone: string;
+  token: string;
+  error: string;
+}
+
 export interface User {
   username: string;
   phone: string;

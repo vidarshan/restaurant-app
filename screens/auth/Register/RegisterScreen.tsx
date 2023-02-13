@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch, useSelector} from 'react-redux';
 import CustomHeader from '../../../components/CustomHeader';
 import {IRegisterScreen} from '../../../models/IRegisterScreen';
-import {registerUser} from '../../../redux/auth/index';
+import {getUser, registerUser, resetError} from '../../../redux/auth/index';
 import {AppDispatch, RootState} from '../../../redux/store';
 import {authStyles} from '../../../styles/AuthScreens';
 import {unselectedStar, warningColor} from '../../../styles/GlobalStyles';
@@ -19,18 +19,32 @@ import {customButtonStyles} from '../../../styles/CustomButton';
 
 const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
   const dispatch = useDispatch<AppDispatch>();
-  const {user} = useSelector((state: RootState) => state.auth);
-  const [username, setUsername] = useState('johndoe');
-  const [phone, setPhone] = useState('0771234567');
-  const [password, setPassword] = useState('123456');
-  const [confirmPassword, setConfirmPassword] = useState('123456');
+  const {error, user} = useSelector((state: RootState) => state.auth);
+  const [username, setUsername] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const submitRegisterUser = () => {
     dispatch(registerUser({username, phone, password, confirmPassword}));
+    // setUsername('');
+    // setPhone('');
+    // setPassword('');
+    // setConfirmPassword('');
   };
   useEffect(() => {
     dispatch(setInitialUsers());
   }, [user, dispatch]);
+
+  useEffect(() => {
+    dispatch(getUser());
+    if (user.token !== '') {
+      navigation.navigate('Home');
+      dispatch(resetError());
+    } else {
+      navigation.navigate('AuthLogin');
+    }
+  }, [dispatch, navigation, user]);
 
   return (
     <SafeAreaView style={authStyles.authView}>
@@ -42,6 +56,7 @@ const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
           color={warningColor}
         />
         <CustomHeader title="Create new account" />
+        <Text style={authStyles.error}>{error}</Text>
         <TextInput
           editable
           value={username}
@@ -54,8 +69,7 @@ const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
         <TextInput
           editable
           value={phone}
-          maxLength={40}
-          onChangeText={text => setPhone(text)}
+          onChangeText={text => setPhone(text.replace(/[^0-9]/g, ''))}
           placeholder="Phone"
           style={authStyles.input}
           placeholderTextColor={unselectedStar}
@@ -79,7 +93,21 @@ const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
           placeholderTextColor={unselectedStar}
         />
         <TouchableHighlight
-          style={customButtonStyles.defaultBtn}
+          disabled={
+            (username === '' &&
+              password === '' &&
+              phone === '' &&
+              confirmPassword === '') ||
+            password !== confirmPassword
+          }
+          style={
+            username === '' &&
+            password === '' &&
+            phone === '' &&
+            confirmPassword === ''
+              ? customButtonStyles.disabledBtn
+              : customButtonStyles.defaultBtn
+          }
           onPress={() => submitRegisterUser()}>
           <Text style={customButtonStyles.defaultText}>Register</Text>
         </TouchableHighlight>

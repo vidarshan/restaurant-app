@@ -48,7 +48,7 @@ const App = () => {
           <Stack.Screen
             name="AuthRegister"
             component={RegisterScreen}
-            options={{headerShown: false}}
+            options={{headerShown: false, gestureEnabled: false}}
           />
           <Stack.Screen
             name="Home"

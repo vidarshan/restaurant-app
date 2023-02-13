@@ -33,8 +33,6 @@ const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
     if (user.token) {
       navigation.navigate('Home');
       dispatch(resetError());
-    } else {
-      navigation.navigate('AuthLogin');
     }
   }, [dispatch, navigation, user]);
 

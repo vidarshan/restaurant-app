@@ -16,7 +16,7 @@ const LoadingScreen: React.FC<IOrderScreen> = ({navigation}) => {
     if (user.token !== '') {
       navigation.navigate('Home');
     } else {
-      navigation.navigate('AuthLogin');
+      navigation.navigate('AuthRegister');
     }
   }, [dispatch, navigation, user]);
 
