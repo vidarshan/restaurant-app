@@ -26,6 +26,7 @@ const UserScreen = ({navigation}: any) => {
 
   return (
     <View style={accountStyles.viewBg}>
+      {console.log(ovenList)}
       <View style={accountStyles.viewContent}>
         <View style={accountStyles.avatarContainer}>
           <Text style={accountStyles.avatarText}>

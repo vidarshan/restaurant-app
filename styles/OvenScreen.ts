@@ -5,6 +5,7 @@ import {
   cardbgColor,
   defaultBorderRadius,
   defaultFontWeight,
+  fontColor,
 } from './GlobalStyles';
 
 export const ovenScreenStyles = StyleSheet.create({
