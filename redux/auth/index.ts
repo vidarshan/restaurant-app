@@ -122,6 +122,9 @@ export const authSlice = createSlice({
     setInitialUsers(state: AuthInitialState) {
       state.users = [];
     },
+    resetError(state: AuthInitialState) {
+      state.error = '';
+    },
   },
   extraReducers: builder => {
     builder
@@ -132,13 +135,12 @@ export const authSlice = createSlice({
         logInUser.fulfilled,
         (state, {payload}: PayloadAction<LogInUserPayload>) => {
           console.log('payload', payload);
-          if (payload.error === '') {
+          if (!payload.error) {
             state.loading = false;
             state.user.id = payload.id;
             state.user.username = payload.username;
             state.user.phone = payload.phone;
             state.user.token = payload.token;
-            state.error = payload.token;
           } else {
             state.loading = false;
             state.user.id = '';
@@ -168,7 +170,7 @@ export const authSlice = createSlice({
       })
       .addCase(
         getUser.fulfilled,
-        (state, {payload}: PayloadAction<LoggedInUser>) => {
+        (state, {payload}: PayloadAction<LogInUserPayload>) => {
           state.loading = false;
           state.user.id = payload.id;
           state.user.phone = payload.phone;
@@ -196,5 +198,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const {setInitialUsers} = authSlice.actions;
+export const {setInitialUsers, resetError} = authSlice.actions;
 export const authReducer = authSlice.reducer;

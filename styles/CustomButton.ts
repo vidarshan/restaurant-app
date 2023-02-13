@@ -1,5 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {accentColor, bgColor, dangerColor} from './GlobalStyles';
+import {
+  accentColor,
+  bgColor,
+  dangerColor,
+  unselectedStar,
+} from './GlobalStyles';
 
 export const customButtonStyles = StyleSheet.create({
   defaultBtn: {
@@ -31,5 +36,12 @@ export const customButtonStyles = StyleSheet.create({
     color: accentColor,
     textAlign: 'center',
     fontWeight: '600',
+  },
+  disabledBtn: {
+    backgroundColor: unselectedStar,
+    borderRadius: 8,
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginTop: 10,
   },
 });

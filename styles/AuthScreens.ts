@@ -22,6 +22,7 @@ export const authStyles = StyleSheet.create({
   },
   error: {
     color: dangerColor,
+    fontWeight: '500',
   },
   input: {
     color: fontColor,

@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {useDispatch, useSelector} from 'react-redux';
 import CustomHeader from '../../../components/CustomHeader';
 import {ILoginScreen} from '../../../models/ILoginScreen';
-import {getUser, logInUser} from '../../../redux/auth';
+import {getUser, logInUser, resetError} from '../../../redux/auth';
 import {AppDispatch, RootState} from '../../../redux/store';
 import {authStyles} from '../../../styles/AuthScreens';
 import {customButtonStyles} from '../../../styles/CustomButton';
@@ -19,27 +19,24 @@ import {unselectedStar, warningColor} from '../../../styles/GlobalStyles';
 const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
   const dispatch = useDispatch<AppDispatch>();
   const {error, user} = useSelector((state: RootState) => state.auth);
-  const [phone, setPhone] = useState('0771234567');
-  const [password, setPassword] = useState('123456');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
 
   const submitLoginUser = () => {
     dispatch(logInUser({phone, password}));
-    // setPhone('');
-    // setPassword('');
+    setPhone('');
+    setPassword('');
   };
 
   useEffect(() => {
     dispatch(getUser());
     if (user.token) {
       navigation.navigate('Home');
+      dispatch(resetError());
     } else {
       navigation.navigate('AuthLogin');
     }
   }, [dispatch, navigation, user]);
-
-  useEffect(() => {
-    console.log('ser.token', user.token);
-  }, [user]);
 
   return (
     <SafeAreaView style={authStyles.authView}>
@@ -55,8 +52,8 @@ const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
         <TextInput
           editable
           value={phone}
-          maxLength={40}
-          onChangeText={text => setPhone(text)}
+          maxLength={10}
+          onChangeText={text => setPhone(text.replace(/[^0-9]/g, ''))}
           placeholder="Phone"
           style={authStyles.input}
           placeholderTextColor={unselectedStar}
@@ -64,15 +61,19 @@ const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
         <TextInput
           editable
           value={password}
-          maxLength={40}
           onChangeText={text => setPassword(text)}
+          secureTextEntry={true}
           placeholder="Password"
           style={authStyles.input}
           placeholderTextColor={unselectedStar}
         />
         <TouchableHighlight
           disabled={phone === '' && password === ''}
-          style={customButtonStyles.defaultBtn}
+          style={
+            phone === '' || password === ''
+              ? customButtonStyles.disabledBtn
+              : customButtonStyles.defaultBtn
+          }
           onPress={() => submitLoginUser()}>
           <Text style={customButtonStyles.defaultText}>Login</Text>
         </TouchableHighlight>
