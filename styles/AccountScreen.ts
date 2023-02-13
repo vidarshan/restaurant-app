@@ -21,6 +21,11 @@ export const accountStyles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
   },
+  name: {
+    color: fontColor,
+    textAlign: 'center',
+    marginBottom: 10,
+  },
   avatarText: {
     color: fontColor,
     fontSize: 24,

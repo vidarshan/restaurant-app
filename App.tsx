@@ -24,7 +24,7 @@ const App = () => {
     <Provider store={store}>
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator
-          initialRouteName="AuthLogin"
+          initialRouteName="Initial"
           screenOptions={{
             headerStyle: {
               backgroundColor: bgColor,
@@ -43,7 +43,7 @@ const App = () => {
           <Stack.Screen
             name="AuthLogin"
             component={LoginScreen}
-            options={{headerShown: false}}
+            options={{headerShown: false, gestureEnabled: false}}
           />
           <Stack.Screen
             name="AuthRegister"

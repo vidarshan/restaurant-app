@@ -1,8 +1,9 @@
-export interface LoggedInUser {
+export interface LogInUserPayload {
   id: string;
   username: string;
   phone: string;
   token: string;
+  error: string;
 }
 
 export interface User {

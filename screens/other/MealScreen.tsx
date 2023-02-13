@@ -65,7 +65,6 @@ const MealScreen: React.FC<IMealScreen> = ({navigation, route}) => {
       quantity,
       price: itemPrice.current,
     };
-    console.log(ovenObj);
     dispatch(addMealToOven(ovenObj));
     navigation.navigate('Oven');
   };

@@ -18,21 +18,31 @@ import {unselectedStar, warningColor} from '../../../styles/GlobalStyles';
 
 const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
   const dispatch = useDispatch<AppDispatch>();
-  const loginState = useSelector((state: RootState) => state.auth);
+  const {error, user} = useSelector((state: RootState) => state.auth);
   const [phone, setPhone] = useState('0771234567');
   const [password, setPassword] = useState('123456');
 
   const submitLoginUser = () => {
     dispatch(logInUser({phone, password}));
+    // setPhone('');
+    // setPassword('');
   };
 
   useEffect(() => {
     dispatch(getUser());
-  }, [dispatch, loginState]);
+    if (user.token) {
+      navigation.navigate('Home');
+    } else {
+      navigation.navigate('AuthLogin');
+    }
+  }, [dispatch, navigation, user]);
+
+  useEffect(() => {
+    console.log('ser.token', user.token);
+  }, [user]);
 
   return (
     <SafeAreaView style={authStyles.authView}>
-      {console.log(loginState)}
       <View style={authStyles.authViewPadding}>
         <Icon
           style={authStyles.iconSpacing}
@@ -41,6 +51,7 @@ const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
           color={warningColor}
         />
         <CustomHeader title="Login to your account" />
+        <Text style={authStyles.error}>{error}</Text>
         <TextInput
           editable
           value={phone}

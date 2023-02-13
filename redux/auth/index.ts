@@ -6,7 +6,7 @@ import {
   IUserDetails,
   IExistingUserDetails,
   AuthInitialState,
-  LoggedInUser,
+  LogInUserPayload,
 } from './models';
 
 const initialState = {
@@ -41,23 +41,32 @@ export const logInUser = createAsyncThunk(
   async (user: IExistingUserDetails, {getState}) => {
     const state: any = getState();
     const ifCurrentUser = await ifUserExists(user.phone);
-    console.log('ifCurrentUser', ifCurrentUser);
     if (ifCurrentUser.length === 1) {
       const userToken = generateToken(20);
-      const storageUserObj = {
-        id: ifCurrentUser[0].id,
-        username: ifCurrentUser[0].username,
-        password: ifCurrentUser[0].password,
-        token: userToken,
-      };
-      await AsyncStorage.setItem('@user', JSON.stringify(storageUserObj));
+      if (ifCurrentUser[0].password === user.password) {
+        const storageUserObj = {
+          id: ifCurrentUser[0].id,
+          username: ifCurrentUser[0].username,
+          password: ifCurrentUser[0].password,
+          token: userToken,
+        };
+        await AsyncStorage.setItem('@user', JSON.stringify(storageUserObj));
+        return {
+          ...state.auth.user,
+          id: ifCurrentUser[0].id,
+          username: ifCurrentUser[0].username,
+          phone: ifCurrentUser[0].phone,
+          password: ifCurrentUser[0].password,
+          token: userToken,
+        };
+      } else {
+        return {
+          error: 'Wrong Password',
+        };
+      }
+    } else {
       return {
-        ...state.auth.user,
-        id: ifCurrentUser[0].id,
-        username: ifCurrentUser[0].username,
-        phone: ifCurrentUser[0].phone,
-        password: ifCurrentUser[0].password,
-        token: userToken,
+        error: 'No user found. Create an account',
       };
     }
   },
@@ -67,6 +76,16 @@ export const getUser = createAsyncThunk('getUser', async () => {
   const response = await AsyncStorage.getItem('@user');
   return JSON.parse(response || '');
 });
+
+export const logout = createAsyncThunk(
+  'logout',
+  async (user: LogInUserPayload, {}) => {
+    const ifCurrentUser = await ifUserExists(user.phone);
+    if (ifCurrentUser) {
+      await AsyncStorage.removeItem('@user');
+    }
+  },
+);
 
 export const registerUser = createAsyncThunk(
   'register',
@@ -111,12 +130,23 @@ export const authSlice = createSlice({
       })
       .addCase(
         logInUser.fulfilled,
-        (state, {payload}: PayloadAction<LoggedInUser>) => {
-          state.loading = false;
-          state.user.id = payload.id;
-          state.user.username = payload.username;
-          state.user.phone = payload.phone;
-          state.user.token = payload.token;
+        (state, {payload}: PayloadAction<LogInUserPayload>) => {
+          console.log('payload', payload);
+          if (payload.error === '') {
+            state.loading = false;
+            state.user.id = payload.id;
+            state.user.username = payload.username;
+            state.user.phone = payload.phone;
+            state.user.token = payload.token;
+            state.error = payload.token;
+          } else {
+            state.loading = false;
+            state.user.id = '';
+            state.user.username = '';
+            state.user.phone = '';
+            state.user.token = '';
+            state.error = payload.error;
+          }
         },
       )
       .addCase(logInUser.rejected, state => {
@@ -148,7 +178,20 @@ export const authSlice = createSlice({
       )
       .addCase(getUser.rejected, state => {
         state.loading = false;
-        state.error = 'Error loading user';
+      })
+      .addCase(logout.pending, state => {
+        state.loading = false;
+      })
+      .addCase(logout.fulfilled, state => {
+        state.user.id = '';
+        state.user.phone = '';
+        state.user.token = '';
+        state.user.username = '';
+        state.loading = false;
+      })
+      .addCase(logout.rejected, state => {
+        state.loading = false;
+        state.error = 'An error occurred';
       });
   },
 });

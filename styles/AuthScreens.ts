@@ -1,5 +1,11 @@
 import {StyleSheet} from 'react-native';
-import {bgColor, cardbgColor, fontColor, viewPadding} from './GlobalStyles';
+import {
+  dangerColor,
+  bgColor,
+  cardbgColor,
+  fontColor,
+  viewPadding,
+} from './GlobalStyles';
 
 export const authStyles = StyleSheet.create({
   authView: {
@@ -13,6 +19,9 @@ export const authStyles = StyleSheet.create({
   },
   authViewPadding: {
     padding: viewPadding,
+  },
+  error: {
+    color: dangerColor,
   },
   input: {
     color: fontColor,
