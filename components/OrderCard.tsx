@@ -3,7 +3,8 @@ import {Image, Text, TouchableOpacity, View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch} from 'react-redux';
 import {IOrderScreen} from '../models/IOrderCard';
-import {removeFromOven} from '../redux/oven';
+import {removeOrderFromOven} from '../redux/oven';
+import {AppDispatch} from '../redux/store';
 import {accentColor, dangerColor} from '../styles/GlobalStyles';
 import {orderScreenStyles} from '../styles/OrderScreen';
 import {ovenScreenStyles} from '../styles/OvenScreen';
@@ -11,10 +12,10 @@ import {ovenScreenStyles} from '../styles/OvenScreen';
 const OrderCard: React.FC<IOrderScreen> = ({
   item = {id: '', price: '', image: '', name: '', quantity: '', addons: []},
 }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   const deleteOvenItem = () => {
-    dispatch(removeFromOven(item.id));
+    dispatch(removeOrderFromOven(item.id));
   };
 
   return (

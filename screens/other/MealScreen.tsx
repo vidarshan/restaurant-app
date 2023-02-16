@@ -8,14 +8,16 @@ import {IOrder} from '../../redux/oven/models';
 import {ISize} from '../../models/ISize';
 import {rowTopMargin, bgColor, accentColor} from '../../styles/GlobalStyles';
 import {mealScreenStyles} from '../../styles/MealScreen';
-import {addToOven as addMealToOven} from '../../redux/oven/index';
+import {addOrdertoOven} from '../../redux/oven/index';
+import {AppDispatch} from '../../redux/store';
+import uuid from 'react-native-uuid';
 
 const MealScreen: React.FC<IMealScreen> = ({navigation, route}) => {
   const {
     meal: {image, name, description, addons, vegan, sizes, orders},
   } = route.params;
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const itemPrice = useRef(sizes[0].price * 1);
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
   const [selectedAddOns, setSelectedAddOns] = useState([]);
@@ -56,7 +58,7 @@ const MealScreen: React.FC<IMealScreen> = ({navigation, route}) => {
   const addToOven = () => {
     let ovenObj: IOrder;
     ovenObj = {
-      id: '',
+      id: uuid.v4(),
       status: 'In Progress',
       image,
       name,
@@ -65,7 +67,7 @@ const MealScreen: React.FC<IMealScreen> = ({navigation, route}) => {
       quantity,
       price: itemPrice.current,
     };
-    dispatch(addMealToOven(ovenObj));
+    dispatch(addOrdertoOven(ovenObj));
     navigation.navigate('Oven');
   };
 

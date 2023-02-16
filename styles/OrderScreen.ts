@@ -7,13 +7,19 @@ import {
 } from './GlobalStyles';
 
 export const orderScreenStyles = StyleSheet.create({
-  container: {minHeight: '100%', backgroundColor: bgColor},
+  container: {
+    minHeight: '100%',
+    backgroundColor: bgColor,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
   chipPriceRow: {
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 10,
+    marginLeft: 10,
   },
   chipRow: {
     flexDirection: 'row',
@@ -55,5 +61,5 @@ export const orderScreenStyles = StyleSheet.create({
     borderRadius: 8,
   },
   addOnText: {color: fontColor},
-  headerText: {color: fontColor, margin: 5, fontWeight: '500', fontSize: 18},
+  headerText: {color: fontColor, margin: 0, fontWeight: '500', fontSize: 18},
 });

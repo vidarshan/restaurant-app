@@ -11,7 +11,9 @@ const OrderComplete: React.FC<ICompleteScreen> = ({navigation}) => {
     <View style={completeScreen.container}>
       <Icon name="check" size={60} color={warningColor} />
       <Text style={completeScreen.title}>Placed Order</Text>
-      <Text style={completeScreen.subTitle}>View order in your account</Text>
+      <Text style={completeScreen.subTitle}>
+        Your order will ship in 30 mins. View order in your account
+      </Text>
       <TouchableOpacity
         onPress={() => navigation.navigate('Home')}
         style={ovenScreenStyles.checkoutBtn}>

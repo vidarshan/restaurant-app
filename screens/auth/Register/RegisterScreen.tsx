@@ -69,6 +69,7 @@ const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
         <TextInput
           editable
           value={phone}
+          maxLength={10}
           onChangeText={text => setPhone(text.replace(/[^0-9]/g, ''))}
           placeholder="Phone"
           style={authStyles.input}
