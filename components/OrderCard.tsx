@@ -49,13 +49,13 @@ const OrderCard: React.FC<IOrderScreen> = ({
           </View>
         </View>
         <View style={orderScreenStyles.addOnRow}>
-          {item.addons.map((addOn, key) => (
+          {/* {item.addons.map((addOn, key) => (
             <View style={orderScreenStyles.addOn}>
               <Text style={orderScreenStyles.addOnText} key={key}>
                 {addOn?.toString()}
               </Text>
             </View>
-          ))}
+          ))} */}
         </View>
       </View>
     </TouchableOpacity>

@@ -5,6 +5,7 @@ import OrderCard from '../../components/OrderCard';
 import {IOvenScreen} from '../../models/IOvenScreen';
 import {getOven} from '../../redux/oven';
 import {AppDispatch, RootState} from '../../redux/store';
+import {bgColor} from '../../styles/GlobalStyles';
 import {ovenScreenStyles} from '../../styles/OvenScreen';
 
 const OvenScreen: React.FC<IOvenScreen> = ({navigation}) => {
@@ -34,13 +35,23 @@ const OvenScreen: React.FC<IOvenScreen> = ({navigation}) => {
           )}
         />
         {ovenList && ovenList.length ? (
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Order')}
-            style={ovenScreenStyles.checkoutBtn}>
-            <Text style={ovenScreenStyles.checkoutText}>
-              {`Go to checkout    $${calculateTotal()}`}
-            </Text>
-          </TouchableOpacity>
+          <View
+            style={{
+              width: '100%',
+              backgroundColor: bgColor,
+              position: 'absolute',
+              paddingTop: 10,
+              paddingBottom: 30,
+              bottom: 0,
+            }}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Order')}
+              style={ovenScreenStyles.checkoutBtn}>
+              <Text style={ovenScreenStyles.checkoutText}>
+                {`Go to checkout    $${calculateTotal()}`}
+              </Text>
+            </TouchableOpacity>
+          </View>
         ) : (
           <Text style={ovenScreenStyles.noItemsText}>
             You have no items in your oven

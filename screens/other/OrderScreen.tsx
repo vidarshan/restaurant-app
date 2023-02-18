@@ -11,12 +11,19 @@ import {orderScreenStyles} from '../../styles/OrderScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {ovenScreenStyles} from '../../styles/OvenScreen';
 import {authStyles} from '../../styles/AuthScreens';
+import {useDispatch, useSelector} from 'react-redux';
+import {addToOrders} from '../../redux/orders/index';
+import uuid from 'react-native-uuid';
+import {AppDispatch, RootState} from '../../redux/store';
+import {customButtonStyles} from '../../styles/CustomButton';
 
 const OrderScreen: React.FC<IOrderScreen> = ({navigation}) => {
+  const dispatch = useDispatch<AppDispatch>();
   const [number, setNumber] = useState('');
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('Cash');
+  const {ovenList} = useSelector((state: RootState) => state.oven);
 
   const onPlaceOrder = () => {
     Alert.alert('Place Order', 'Confirm your order', [
@@ -24,6 +31,23 @@ const OrderScreen: React.FC<IOrderScreen> = ({navigation}) => {
         text: 'Yes, proceed',
         onPress: () => {
           navigation.navigate('OrderComplete');
+          console.log('ovenList', ovenList);
+          {
+            ovenList.map(item => {
+              console.log('item', item);
+            });
+          }
+          dispatch(
+            addToOrders({
+              id: uuid.v4(),
+              price: 3.5,
+              image: '../assets/images/burger1.png',
+              quantity: 1,
+              addons: [],
+              loading: false,
+              error: '',
+            }),
+          );
         },
       },
       {
@@ -33,6 +57,15 @@ const OrderScreen: React.FC<IOrderScreen> = ({navigation}) => {
     ]);
     //navigation.navigate('OrderComplete')
   };
+  // {
+  //   id: uuid.v4(),
+  //   price: 3.5,
+  //   image: '../assets/images/burger1.png',
+  //   quantity: 1,
+  //   addOns: [],
+  //   loading: false,
+  //   error: '',
+  // }
 
   return (
     <SafeAreaView style={orderScreenStyles.container}>
@@ -114,8 +147,13 @@ const OrderScreen: React.FC<IOrderScreen> = ({navigation}) => {
         <Text>Complete</Text>
       </TouchableOpacity>
       <TouchableOpacity
+        disabled={number === '' || street === '' || city === ''}
         onPress={() => onPlaceOrder()}
-        style={ovenScreenStyles.checkoutBtn}>
+        style={
+          number === '' || street === '' || city === ''
+            ? customButtonStyles.disabledBtn
+            : ovenScreenStyles.checkoutBtn
+        }>
         <Text style={ovenScreenStyles.checkoutText}>Place Order</Text>
       </TouchableOpacity>
     </SafeAreaView>

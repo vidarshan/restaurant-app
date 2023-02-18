@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {IOrder, IOrderPayload, IOvenPayload, OvenInitialState} from './models';
+import {IOrder, OvenInitialState} from './models';
 import uuid from 'react-native-uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 

@@ -10,7 +10,7 @@ import {ovenScreenStyles} from '../../../styles/OvenScreen';
 const UserScreen = ({navigation}: any) => {
   const dispatch = useDispatch<AppDispatch>();
   const {user} = useSelector((state: RootState) => state.auth);
-  const {ovenList} = useSelector((state: RootState) => state.oven);
+  const {ordersList} = useSelector((state: RootState) => state.orders);
 
   console.log('usersss', user);
 
@@ -26,7 +26,7 @@ const UserScreen = ({navigation}: any) => {
 
   return (
     <View style={accountStyles.viewBg}>
-      {console.log(ovenList)}
+      {console.log(ordersList)}
       <View style={accountStyles.viewContent}>
         <View style={accountStyles.avatarContainer}>
           <Text style={accountStyles.avatarText}>
@@ -49,7 +49,7 @@ const UserScreen = ({navigation}: any) => {
       <Text style={accountStyles.recentTitle}>Recent Orders</Text>
       <View>
         <FlatList
-          data={ovenList}
+          data={ordersList}
           renderItem={({item}) => <OrderCard item={item} key={item.id} />}
         />
       </View>
