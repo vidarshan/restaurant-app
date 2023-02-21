@@ -13,7 +13,6 @@ import {ovenScreenStyles} from '../../styles/OvenScreen';
 import {authStyles} from '../../styles/AuthScreens';
 import {useDispatch, useSelector} from 'react-redux';
 import {addToOrders} from '../../redux/orders/index';
-import uuid from 'react-native-uuid';
 import {AppDispatch, RootState} from '../../redux/store';
 import {customButtonStyles} from '../../styles/CustomButton';
 
@@ -24,48 +23,33 @@ const OrderScreen: React.FC<IOrderScreen> = ({navigation}) => {
   const [city, setCity] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('Cash');
   const {ovenList} = useSelector((state: RootState) => state.oven);
-
   const onPlaceOrder = () => {
     Alert.alert('Place Order', 'Confirm your order', [
       {
         text: 'Yes, proceed',
         onPress: () => {
           navigation.navigate('OrderComplete');
-          console.log('ovenList', ovenList);
-          {
-            ovenList.map(item => {
-              console.log('item', item);
-            });
-          }
-          dispatch(
-            addToOrders({
-              id: uuid.v4(),
-              price: 3.5,
-              image: '../assets/images/burger1.png',
-              quantity: 1,
-              addons: [],
-              loading: false,
-              error: '',
-            }),
-          );
+          ovenList.map(item => {
+            dispatch(
+              addToOrders({
+                id: item.id,
+                price: item.price,
+                name: item.name,
+                image: item.image,
+                quantity: item.quantity,
+                addOns: item.addons,
+                date: Date.now(),
+                status: 'Preparing',
+              }),
+            );
+          });
         },
       },
       {
         text: 'Dismiss',
-        onPress: () => console.log('Cancel Pressed'),
       },
     ]);
-    //navigation.navigate('OrderComplete')
   };
-  // {
-  //   id: uuid.v4(),
-  //   price: 3.5,
-  //   image: '../assets/images/burger1.png',
-  //   quantity: 1,
-  //   addOns: [],
-  //   loading: false,
-  //   error: '',
-  // }
 
   return (
     <SafeAreaView style={orderScreenStyles.container}>

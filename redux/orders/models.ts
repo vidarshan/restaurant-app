@@ -14,9 +14,11 @@ export interface IOrderItemDetails {
 
 export interface IOrderItemDetailsPayload {
   id: string;
+  name: string;
   price: number;
   image: any;
   quantity: number;
   addOns: IAddOn[];
-  loading: false;
+  date: any;
+  status: string;
 }

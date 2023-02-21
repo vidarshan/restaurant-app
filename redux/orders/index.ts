@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {IOrder, IOrderItemDetails} from './models';
+import {IOrderItemDetailsPayload} from './models';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const getOrders = createAsyncThunk('getOrders', async () => {
@@ -17,7 +17,7 @@ export const getOrders = createAsyncThunk('getOrders', async () => {
 
 export const addToOrders = createAsyncThunk(
   'addToOven',
-  async (orderInfo: any, {}) => {
+  async (orderInfo: IOrderItemDetailsPayload, {}) => {
     try {
       const orderList = await AsyncStorage.getItem('@orders');
       const mutableOrderList = JSON.parse(orderList || '[]');

@@ -102,7 +102,6 @@ const mealsSlice = createSlice({
       })
       .addCase(addOrdertoOven.fulfilled, (state, {payload}) => {
         state.loading = false;
-        console.log(payload);
         state.ovenList = payload.list;
       })
       .addCase(
@@ -117,7 +116,6 @@ const mealsSlice = createSlice({
       })
       .addCase(removeOrderFromOven.fulfilled, (state, {payload}) => {
         state.loading = false;
-        console.log(payload);
         state.ovenList = payload.list;
       })
       .addCase(

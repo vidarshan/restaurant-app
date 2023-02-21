@@ -81,6 +81,7 @@ const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
           maxLength={40}
           onChangeText={text => setPassword(text)}
           placeholder="Password"
+          secureTextEntry={true}
           style={authStyles.input}
           placeholderTextColor={unselectedStar}
         />
@@ -90,6 +91,7 @@ const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
           onChangeText={text => setConfirmPassword(text)}
           maxLength={40}
           placeholder="Confirm Password"
+          secureTextEntry={true}
           style={authStyles.input}
           placeholderTextColor={unselectedStar}
         />

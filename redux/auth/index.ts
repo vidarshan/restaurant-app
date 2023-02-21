@@ -78,15 +78,12 @@ export const getUser = createAsyncThunk('getUser', async () => {
   return JSON.parse(response || '');
 });
 
-export const logout = createAsyncThunk(
-  'logout',
-  async (user: LogInUserPayload, {}) => {
-    const ifCurrentUser = await ifUserExists(user.phone);
-    if (ifCurrentUser) {
-      await AsyncStorage.removeItem('@user');
-    }
-  },
-);
+export const logout = createAsyncThunk('logout', async (phone: string, {}) => {
+  const ifCurrentUser = await ifUserExists(phone);
+  if (ifCurrentUser) {
+    await AsyncStorage.removeItem('@user');
+  }
+});
 
 export const registerUser = createAsyncThunk(
   'register',
@@ -142,7 +139,6 @@ export const authSlice = createSlice({
       .addCase(
         logInUser.fulfilled,
         (state, {payload}: PayloadAction<LogInUserPayload>) => {
-          console.log('payload', payload);
           if (!payload.error) {
             state.loading = false;
             state.user.id = payload.id;
