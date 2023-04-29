@@ -16,7 +16,7 @@ export interface IMeal {
   addons: IAddOn[];
   price: number;
   foodType: string;
-  image: any;
+  image: string;
   vegan: boolean;
   orders: number;
   rating: number;

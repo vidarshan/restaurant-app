@@ -6,14 +6,14 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch, useSelector} from 'react-redux';
 import CustomHeader from '../../../components/CustomHeader';
 import {IRegisterScreen} from '../../../models/IRegisterScreen';
 import {getUser, registerUser, resetError} from '../../../redux/auth/index';
 import {AppDispatch, RootState} from '../../../redux/store';
 import {authStyles} from '../../../styles/AuthScreens';
-import {unselectedStar, warningColor} from '../../../styles/GlobalStyles';
+import {unselectedStar} from '../../../styles/GlobalStyles';
 import {setInitialUsers} from '../../../redux/auth/index';
 import {customButtonStyles} from '../../../styles/CustomButton';
 
@@ -49,12 +49,12 @@ const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
   return (
     <SafeAreaView style={authStyles.authView}>
       <View style={authStyles.authViewPadding}>
-        <Icon
+        {/* <Icon
           style={authStyles.iconSpacing}
           name="fire"
           size={60}
           color={warningColor}
-        />
+        /> */}
         <CustomHeader title="Create new account" />
         <Text style={authStyles.error}>{error}</Text>
         <TextInput

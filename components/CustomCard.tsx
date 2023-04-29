@@ -1,25 +1,30 @@
 import React from 'react';
 import {Text, TouchableOpacity, Image, View} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {FaCircle} from 'react-icons/fa';
 import {ICustomCard} from '../models/ICustomCard';
 import {customCardStyles} from '../styles/CustomCard';
 import {homeStyles} from '../styles/HomeScreen';
 import Rating from './Rating';
+import {getPlatform} from '../utils';
+import {useNavigate} from 'react-router';
 
 const CustomCard: React.FC<ICustomCard> = ({item, navigation}) => {
+  let webNavigate = useNavigate();
+
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Meal', {meal: item})}>
+    <TouchableOpacity
+      onPress={() => {
+        getPlatform() === 'web'
+          ? webNavigate(`/meal/${item.id}`)
+          : navigation.navigate('Meal');
+      }}>
       <View style={customCardStyles().item}>
         <Image style={customCardStyles().image} source={item.image} />
         <View style={customCardStyles().detailsContainer}>
           <View style={customCardStyles().veganContainer}>
             <Text style={homeStyles().itemText}>{item.name}</Text>
             <View style={homeStyles().veganIconContainer}>
-              <Icon
-                name="circle"
-                size={8}
-                color={item.vegan ? 'green' : 'red'}
-              />
+              <FaCircle size={8} color={item.vegan ? 'lightGreen' : 'red'} />
             </View>
           </View>
           <Rating rating={item.rating} />

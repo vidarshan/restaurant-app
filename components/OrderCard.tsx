@@ -1,11 +1,10 @@
 import React from 'react';
 import {Image, Text, TouchableOpacity, View} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import {useDispatch} from 'react-redux';
 import {IOrderScreen} from '../models/IOrderCard';
 import {removeOrderFromOven} from '../redux/oven';
 import {AppDispatch} from '../redux/store';
-import {accentColor, dangerColor} from '../styles/GlobalStyles';
 import {orderScreenStyles} from '../styles/OrderScreen';
 import {ovenScreenStyles} from '../styles/OvenScreen';
 
@@ -23,12 +22,12 @@ const OrderCard: React.FC<IOrderScreen> = ({
       <View style={ovenScreenStyles.item}>
         <View style={orderScreenStyles.chipPriceRow}>
           <View style={orderScreenStyles.chipRow}>
-            <Icon
+            {/* <Icon
               style={orderScreenStyles.iconMargin}
               name="circle"
               size={8}
               color={accentColor}
-            />
+            /> */}
             <Text style={orderScreenStyles.chipText}>Delivered</Text>
           </View>
           <Text style={orderScreenStyles.chipText}>${item.price}</Text>
@@ -44,7 +43,7 @@ const OrderCard: React.FC<IOrderScreen> = ({
               </Text>
             </View>
             <TouchableOpacity onPress={() => deleteOvenItem()}>
-              <Icon name="trash" size={16} color={dangerColor} />
+              {/* <Icon name="trash" size={16} color={dangerColor} /> */}
             </TouchableOpacity>
           </View>
         </View>

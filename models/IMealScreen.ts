@@ -1,4 +1,4 @@
 export interface IMealScreen {
-  navigation: any;
-  route: any;
+  navigation?: any;
+  route?: any;
 }

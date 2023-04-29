@@ -2,13 +2,9 @@ import React, {useState} from 'react';
 import {Alert, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {IOrderScreen} from '../../models/IOrderCard';
-import {
-  accentColor,
-  unselectedStar,
-  warningColor2,
-} from '../../styles/GlobalStyles';
+import {unselectedStar} from '../../styles/GlobalStyles';
 import {orderScreenStyles} from '../../styles/OrderScreen';
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import {ovenScreenStyles} from '../../styles/OvenScreen';
 import {authStyles} from '../../styles/AuthScreens';
 import {useDispatch, useSelector} from 'react-redux';
@@ -88,42 +84,21 @@ const OrderScreen: React.FC<IOrderScreen> = ({navigation}) => {
           <TouchableOpacity
             style={ovenScreenStyles.paymentOption}
             onPress={() => setPaymentMethod('Cash')}>
-            {paymentMethod === 'Cash' && (
-              <Icon
-                style={ovenScreenStyles.iconMargin}
-                name="check"
-                size={12}
-                color={accentColor}
-              />
-            )}
+            {paymentMethod === 'Cash' && <></>}
 
-            <Icon name="money" size={26} color={warningColor2} />
+            {/* <Icon name="money" size={26} color={warningColor2} /> */}
           </TouchableOpacity>
           <TouchableOpacity
             style={ovenScreenStyles.paymentOption}
             onPress={() => setPaymentMethod('MasterCard')}>
-            {paymentMethod === 'MasterCard' && (
-              <Icon
-                style={ovenScreenStyles.iconMargin}
-                name="check"
-                size={12}
-                color={accentColor}
-              />
-            )}
-            <Icon name="cc-mastercard" size={26} color={warningColor2} />
+            {paymentMethod === 'MasterCard' && <></>}
+            {/* <Icon name="cc-mastercard" size={26} color={warningColor2} /> */}
           </TouchableOpacity>
           <TouchableOpacity
             style={ovenScreenStyles.paymentOption}
             onPress={() => setPaymentMethod('Visa')}>
-            {paymentMethod === 'Visa' && (
-              <Icon
-                style={ovenScreenStyles.iconMargin}
-                name="check"
-                size={12}
-                color={accentColor}
-              />
-            )}
-            <Icon name="cc-visa" size={26} color={warningColor2} />
+            {paymentMethod === 'Visa' && <></>}
+            {/* <Icon name="cc-visa" size={26} color={warningColor2} /> */}
           </TouchableOpacity>
         </View>
       </View>

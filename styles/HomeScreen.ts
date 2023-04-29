@@ -7,10 +7,7 @@ import {
   fontColor,
 } from './GlobalStyles';
 
-export const homeStyles = (
-  chipBgColor?: string,
-  veganIconBorderColor?: string,
-) =>
+export const homeStyles = (veganIconBorderColor?: string) =>
   StyleSheet.create({
     container: {
       flex: 1,

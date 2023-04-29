@@ -1,17 +1,17 @@
 import React from 'react';
 import {View} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {FaStar} from 'react-icons/fa';
 import {IRating} from '../models/IRating';
 import {customCardStyles} from '../styles/CustomCard';
 import {accentColor, unselectedStar} from '../styles/GlobalStyles';
 
 const Rating: React.FC<IRating> = ({rating}) => {
   const renderRatingsList = () => {
-    const stars = [];
+    const stars: JSX.Element[] = [];
 
     for (let i = 1; i <= rating; i++) {
       stars.push(
-        <Icon key={`stars:${i}`} name="star" size={12} color={accentColor} />,
+        <FaStar key={`stars:${i}`} name="star" size={12} color={accentColor} />,
       );
     }
 
@@ -19,7 +19,7 @@ const Rating: React.FC<IRating> = ({rating}) => {
 
     for (let i = 1; i <= remainingStars; i++) {
       stars.push(
-        <Icon
+        <FaStar
           key={`remainingStars:${i}`}
           name="star"
           size={12}

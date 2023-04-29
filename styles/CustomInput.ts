@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {cardbgColor, fontColor} from './GlobalStyles';
 
 export const customInput = StyleSheet.create({
   input: {

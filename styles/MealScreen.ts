@@ -10,12 +10,15 @@ import {
 } from './GlobalStyles';
 
 export const mealScreenStyles = StyleSheet.create({
-  mealScreen: {
-    flex: 1,
+  container: {
     paddingTop: 30,
     paddingLeft: 20,
     paddingRight: 20,
-    minHeight: '100%',
+    maxHeight: '100%',
+  },
+  mealScreen: {
+    flex: 1,
+    minHeight: '100vh',
     backgroundColor: bgColor,
   },
   img: {

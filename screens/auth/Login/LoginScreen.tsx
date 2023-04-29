@@ -6,7 +6,7 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+// import Icon from 'react-native-vector-icons/FontAwesome5';
 import {useDispatch, useSelector} from 'react-redux';
 import CustomHeader from '../../../components/CustomHeader';
 import {ILoginScreen} from '../../../models/ILoginScreen';
@@ -14,7 +14,7 @@ import {getUser, logInUser, resetError} from '../../../redux/auth';
 import {AppDispatch, RootState} from '../../../redux/store';
 import {authStyles} from '../../../styles/AuthScreens';
 import {customButtonStyles} from '../../../styles/CustomButton';
-import {unselectedStar, warningColor} from '../../../styles/GlobalStyles';
+import {unselectedStar} from '../../../styles/GlobalStyles';
 
 const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -39,12 +39,12 @@ const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
   return (
     <SafeAreaView style={authStyles.authView}>
       <View style={authStyles.authViewPadding}>
-        <Icon
+        {/* <Icon
           style={authStyles.iconSpacing}
           name="hamburger"
           size={60}
           color={warningColor}
-        />
+        /> */}
         <CustomHeader title="Login to your account" />
         <Text style={authStyles.error}>{error}</Text>
         <TextInput

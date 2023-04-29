@@ -100,10 +100,13 @@ const mealsSlice = createSlice({
       .addCase(addOrdertoOven.pending, state => {
         state.loading = false;
       })
-      .addCase(addOrdertoOven.fulfilled, (state, {payload}) => {
-        state.loading = false;
-        state.ovenList = payload.list;
-      })
+      .addCase(
+        addOrdertoOven.fulfilled,
+        (state, {payload}: PayloadAction<any>) => {
+          state.loading = false;
+          state.ovenList = payload.list;
+        },
+      )
       .addCase(
         addOrdertoOven.rejected,
         (state, {payload}: PayloadAction<any>) => {
@@ -114,10 +117,13 @@ const mealsSlice = createSlice({
       .addCase(removeOrderFromOven.pending, state => {
         state.loading = false;
       })
-      .addCase(removeOrderFromOven.fulfilled, (state, {payload}) => {
-        state.loading = false;
-        state.ovenList = payload.list;
-      })
+      .addCase(
+        removeOrderFromOven.fulfilled,
+        (state, {payload}: PayloadAction<any>) => {
+          state.loading = false;
+          state.ovenList = payload.list;
+        },
+      )
       .addCase(
         removeOrderFromOven.rejected,
         (state, {payload}: PayloadAction<any>) => {

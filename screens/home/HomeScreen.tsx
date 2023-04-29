@@ -10,9 +10,8 @@ import {
 } from 'react-native';
 import CustomCard from '../../components/CustomCard';
 import {IHomeScreenProps} from '../../models/IHomeScreen';
-import {cardbgColor} from '../../styles/GlobalStyles';
+// import {cardbgColor} from '../../styles/GlobalStyles';
 import {homeStyles} from '../../styles/HomeScreen';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {RootState} from '../../redux/store';
 import {useDispatch, useSelector} from 'react-redux';
 import {
@@ -23,6 +22,7 @@ import {
 } from '../../redux/meals';
 import {meals as mealsListFromDisk} from '../../data/meals';
 import {categories as categoriesFromDisk} from '../../data/categories';
+import WebHeader from '../../components/WebHeader';
 
 const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
   const dispatch = useDispatch();
@@ -45,13 +45,14 @@ const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
 
   return (
     <SafeAreaView style={homeStyles().container}>
+      <WebHeader />
       <View style={homeStyles().searchListContainer}>
-        <Icon
+        {/* <Icon
           style={{backgroundColor: cardbgColor}}
           name="search"
           size={12}
           color="white"
-        />
+        /> */}
         <TextInput
           placeholderTextColor="white"
           style={homeStyles().searchBar}

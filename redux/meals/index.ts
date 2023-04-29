@@ -1,19 +1,18 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {IMeal} from './models';
 import {meals} from '../../data/meals';
 import {IOrder} from '../oven/models';
 
 const mealsSlice = createSlice({
   name: 'meals',
   initialState: {
-    mealsList: [] as IMeal[],
+    mealsList: [] as any[],
     ovenList: [] as IOrder[],
     categoriesList: [] as string[],
     searchString: '',
     selectedCategory: '',
   },
   reducers: {
-    setMeals(state, action: PayloadAction<IMeal[]>) {
+    setMeals(state, action: PayloadAction<any>) {
       state.mealsList = action.payload;
     },
     setCategories(state, action: PayloadAction<string[]>) {
