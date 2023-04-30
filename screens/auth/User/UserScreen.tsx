@@ -2,28 +2,29 @@ import React, {useEffect} from 'react';
 import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {logout} from '../../../redux/auth';
-import {getOrders} from '../../../redux/orders';
 import {AppDispatch, RootState} from '../../../redux/store';
 import {accountStyles} from '../../../styles/AccountScreen';
 import {fontColor} from '../../../styles/GlobalStyles';
 import {ovenScreenStyles} from '../../../styles/OvenScreen';
 import PastOrdersCard from '../../../components/PastOrdersCard';
+import {getOrders} from '../../../redux/orders';
 
-const UserScreen = ({navigation}: any) => {
+const UserScreen = () => {
   const dispatch = useDispatch<AppDispatch>();
   const {user} = useSelector((state: RootState) => state.auth);
   const {ordersList} = useSelector((state: RootState) => state.orders);
+  console.log(
+    '🚀 ~ file: UserScreen.tsx:15 ~ UserScreen ~ ordersList:',
+    ordersList,
+  );
 
   const onUserLogout = () => {
     dispatch(logout(user.phone));
   };
 
   useEffect(() => {
-    if (user.token === '') {
-      navigation.navigate('AuthLogin');
-    }
     dispatch(getOrders());
-  }, [dispatch, navigation, user.token]);
+  }, [dispatch]);
 
   return (
     <View style={accountStyles.viewBg}>

@@ -4,7 +4,7 @@ import uuid from 'react-native-uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const getOven = createAsyncThunk('getOven', async () => {
-  const response = await AsyncStorage.getItem('@oven');
+  const response = await AsyncStorage.getItem('oven');
   if (response === null) {
     return {
       list: [],
@@ -20,10 +20,10 @@ export const addOrdertoOven = createAsyncThunk(
   'addToOven',
   async (orderInfo: IOrder, {}) => {
     try {
-      const ovenList = await AsyncStorage.getItem('@oven');
+      const ovenList = await localStorage.getItem('oven');
       const mutableOvenList = JSON.parse(ovenList || '[]');
       mutableOvenList.push(orderInfo);
-      await AsyncStorage.setItem('@oven', JSON.stringify(mutableOvenList));
+      await localStorage.setItem('oven', JSON.stringify(mutableOvenList));
       return {
         list: mutableOvenList,
       };
@@ -37,13 +37,13 @@ export const removeOrderFromOven = createAsyncThunk(
   'removeFromOven',
   async (orderId: string, {}) => {
     try {
-      const ovenList = await AsyncStorage.getItem('@oven');
+      const ovenList = await localStorage.getItem('oven');
       const mutableOvenList = JSON.parse(ovenList || '[]');
       const newOvenListWithoutItem = mutableOvenList.filter((order: IOrder) => {
         return order.id !== orderId;
       });
-      await AsyncStorage.setItem(
-        '@oven',
+      await localStorage.setItem(
+        'oven',
         JSON.stringify(newOvenListWithoutItem),
       );
       return {

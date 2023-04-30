@@ -1,18 +1,30 @@
 import React, {useState} from 'react';
-import {Alert, Text, TextInput, TouchableOpacity, View} from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  SafeAreaView,
+} from 'react-native';
 import {IOrderScreen} from '../../models/IOrderCard';
-import {unselectedStar} from '../../styles/GlobalStyles';
+import {unselectedStar, warningColor2} from '../../styles/GlobalStyles';
 import {orderScreenStyles} from '../../styles/OrderScreen';
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import {
+  RiVisaLine,
+  RiMoneyPoundBoxFill,
+  RiMastercardFill,
+} from 'react-icons/ri';
 import {ovenScreenStyles} from '../../styles/OvenScreen';
 import {authStyles} from '../../styles/AuthScreens';
 import {useDispatch, useSelector} from 'react-redux';
 import {addToOrders} from '../../redux/orders/index';
 import {AppDispatch, RootState} from '../../redux/store';
 import {customButtonStyles} from '../../styles/CustomButton';
+import WebHeader from '../../components/WebHeader';
+import {useNavigate} from 'react-router-dom';
 
-const OrderScreen: React.FC<IOrderScreen> = ({navigation}) => {
+const OrderScreen: React.FC<IOrderScreen> = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [number, setNumber] = useState('');
   const [street, setStreet] = useState('');
@@ -20,35 +32,26 @@ const OrderScreen: React.FC<IOrderScreen> = ({navigation}) => {
   const [paymentMethod, setPaymentMethod] = useState('Cash');
   const {ovenList} = useSelector((state: RootState) => state.oven);
   const onPlaceOrder = () => {
-    Alert.alert('Place Order', 'Confirm your order', [
-      {
-        text: 'Yes, proceed',
-        onPress: () => {
-          navigation.navigate('OrderComplete');
-          ovenList.map(item => {
-            dispatch(
-              addToOrders({
-                id: item.id,
-                price: item.price,
-                name: item.name,
-                image: item.image,
-                quantity: item.quantity,
-                addOns: item.addons,
-                date: Date.now(),
-                status: 'Preparing',
-              }),
-            );
-          });
-        },
-      },
-      {
-        text: 'Dismiss',
-      },
-    ]);
+    ovenList.map(item => {
+      dispatch(
+        addToOrders({
+          id: item.id,
+          price: item.price,
+          name: item.name,
+          image: item.image,
+          quantity: item.quantity,
+          addOns: item.addons,
+          date: Date.now(),
+          status: 'Preparing',
+        }),
+      );
+    });
+    navigate('/orderComplete');
   };
 
   return (
     <SafeAreaView style={orderScreenStyles.container}>
+      <WebHeader header="Home" type="back" leftPath="/" />
       <View>
         <Text style={orderScreenStyles.headerText}>
           Complete your order details
@@ -85,26 +88,33 @@ const OrderScreen: React.FC<IOrderScreen> = ({navigation}) => {
             style={ovenScreenStyles.paymentOption}
             onPress={() => setPaymentMethod('Cash')}>
             {paymentMethod === 'Cash' && <></>}
-
-            {/* <Icon name="money" size={26} color={warningColor2} /> */}
+            <RiMoneyPoundBoxFill
+              size={26}
+              color={paymentMethod === 'Cash' ? warningColor2 : unselectedStar}
+            />
           </TouchableOpacity>
           <TouchableOpacity
             style={ovenScreenStyles.paymentOption}
             onPress={() => setPaymentMethod('MasterCard')}>
             {paymentMethod === 'MasterCard' && <></>}
-            {/* <Icon name="cc-mastercard" size={26} color={warningColor2} /> */}
+            <RiMastercardFill
+              size={26}
+              color={
+                paymentMethod === 'MasterCard' ? warningColor2 : unselectedStar
+              }
+            />
           </TouchableOpacity>
           <TouchableOpacity
             style={ovenScreenStyles.paymentOption}
             onPress={() => setPaymentMethod('Visa')}>
             {paymentMethod === 'Visa' && <></>}
-            {/* <Icon name="cc-visa" size={26} color={warningColor2} /> */}
+            <RiVisaLine
+              size={26}
+              color={paymentMethod === 'Visa' ? warningColor2 : unselectedStar}
+            />
           </TouchableOpacity>
         </View>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('OrderComplete')}>
-        <Text>Complete</Text>
-      </TouchableOpacity>
       <TouchableOpacity
         disabled={number === '' || street === '' || city === ''}
         onPress={() => onPlaceOrder()}

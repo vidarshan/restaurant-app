@@ -1,3 +1,3 @@
 export interface IOvenScreen {
-  navigation: any;
+  navigation?: any;
 }

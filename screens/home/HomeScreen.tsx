@@ -23,6 +23,7 @@ import {
 import {meals as mealsListFromDisk} from '../../data/meals';
 import {categories as categoriesFromDisk} from '../../data/categories';
 import WebHeader from '../../components/WebHeader';
+import {FaSearch} from 'react-icons/fa';
 
 const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
   const dispatch = useDispatch();
@@ -45,14 +46,14 @@ const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
 
   return (
     <SafeAreaView style={homeStyles().container}>
-      <WebHeader />
+      <WebHeader
+        header="Meals"
+        type="dual"
+        leftPath="/user"
+        rightPath="/oven"
+      />
       <View style={homeStyles().searchListContainer}>
-        {/* <Icon
-          style={{backgroundColor: cardbgColor}}
-          name="search"
-          size={12}
-          color="white"
-        /> */}
+        <FaSearch color="#fff" />
         <TextInput
           placeholderTextColor="white"
           style={homeStyles().searchBar}

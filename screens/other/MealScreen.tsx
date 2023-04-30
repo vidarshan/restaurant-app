@@ -14,13 +14,15 @@ import {useParams} from 'react-router-dom';
 import {getMeal} from '../../utils';
 import WebHeader from '../../components/WebHeader';
 import {FaCheck, FaPlus, FaMinus, FaCircle, FaCocktail} from 'react-icons/fa';
+import {useNavigate} from 'react-router-dom';
 
-const MealScreen: React.FC<IMealScreen> = ({navigation}) => {
+const MealScreen: React.FC<IMealScreen> = () => {
   const {mealId = ''} = useParams();
 
   const {name, sizes, addons, image, orders, description, vegan} =
     getMeal(mealId);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const itemPrice = useRef(sizes[0].price * 1);
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
@@ -71,11 +73,14 @@ const MealScreen: React.FC<IMealScreen> = ({navigation}) => {
       quantity,
       price: itemPrice.current,
     };
+    console.log(
+      '🚀 ~ file: MealScreen.tsx:76 ~ addToOven ~ selectedAddOns:',
+      selectedAddOns,
+    );
     dispatch(addOrdertoOven(ovenObj));
-    navigation.navigate('Oven');
+    navigate('/oven');
   };
-
-  console.log(sizes);
+  console.log(selectedSize);
 
   return (
     <View style={mealScreenStyles.mealScreen}>
@@ -89,13 +94,17 @@ const MealScreen: React.FC<IMealScreen> = ({navigation}) => {
           <Text style={mealScreenStyles.subTitle}>{description}</Text>
           <View style={mealScreenStyles.summaryRow}>
             <View style={mealScreenStyles.summaryItem}>
-              <FaCocktail size={8} color={vegan ? 'lightGreen' : 'red'} />
+              <View style={mealScreenStyles.iconContainer}>
+                <FaCocktail size={8} color={vegan ? 'lightGreen' : 'red'} />
+              </View>
               <Text style={mealScreenStyles.orderVeganText}>
                 {orders} Orders
               </Text>
             </View>
             <View style={mealScreenStyles.summaryItem}>
-              <FaCircle size={8} color={vegan ? 'lightGreen' : 'red'} />
+              <View style={mealScreenStyles.iconContainer}>
+                <FaCircle size={8} color={vegan ? 'lightGreen' : 'red'} />
+              </View>
               <Text style={mealScreenStyles.orderVeganText}>
                 {vegan ? 'Veg' : 'Non Veg'}
               </Text>
@@ -110,8 +119,12 @@ const MealScreen: React.FC<IMealScreen> = ({navigation}) => {
                   key={index}
                   style={mealScreenStyles.optionBtn}
                   onPress={() => changeSize(size)}>
-                  {selectedSize.size === size.size && <></>}
-                  <FaCheck size={12} color={accentColor} />
+                  {selectedSize.size === size.size && (
+                    <View style={mealScreenStyles.iconContainer}>
+                      <FaCheck size={12} color={accentColor} />
+                    </View>
+                  )}
+
                   <Text key={index} style={mealScreenStyles.optionText}>
                     {size.size}
                   </Text>
@@ -128,7 +141,9 @@ const MealScreen: React.FC<IMealScreen> = ({navigation}) => {
                   style={mealScreenStyles.optionBtn}
                   onPress={() => addAddOns(addon.addOnName, addon.addOnPrice)}>
                   {selectedAddOns.includes(addon.addOnName as never) && (
-                    <FaCheck size={12} color={accentColor} />
+                    <View style={mealScreenStyles.iconContainer}>
+                      <FaCheck size={12} color={accentColor} />
+                    </View>
                   )}
                   <View style={mealScreenStyles.optionRow}>
                     <Text style={mealScreenStyles.optionText}>

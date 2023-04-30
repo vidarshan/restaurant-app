@@ -4,7 +4,7 @@ import {bgColor, fontColor} from './GlobalStyles';
 export const completeScreen = StyleSheet.create({
   container: {
     backgroundColor: bgColor,
-    minHeight: '100%',
+    minHeight: '100vh',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
@@ -17,8 +17,10 @@ export const completeScreen = StyleSheet.create({
   },
   subTitle: {
     color: fontColor,
+    textAlign: 'center',
     fontSize: 16,
     fontWeight: '600',
-    marginBottom: 10,
+    marginLeft: 10,
+    marginRight: 10,
   },
 });

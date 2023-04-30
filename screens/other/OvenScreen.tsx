@@ -6,9 +6,11 @@ import {IOvenScreen} from '../../models/IOvenScreen';
 import {getOven} from '../../redux/oven';
 import {AppDispatch, RootState} from '../../redux/store';
 import {ovenScreenStyles} from '../../styles/OvenScreen';
-
-const OvenScreen: React.FC<IOvenScreen> = ({navigation}) => {
+import WebHeader from '../../components/WebHeader';
+import {useNavigate} from 'react-router';
+const OvenScreen: React.FC<IOvenScreen> = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const {ovenList} = useSelector((state: RootState) => state.oven);
 
   const calculateTotal = () => {
@@ -26,11 +28,12 @@ const OvenScreen: React.FC<IOvenScreen> = ({navigation}) => {
   return (
     <View style={ovenScreenStyles.container}>
       <View>
+        <WebHeader header="Home" type="back" leftPath="/" />
         <>
           <FlatList
             data={ovenList}
             renderItem={({item}) => (
-              <OrderCard navigation={navigation} item={item} key={item.id} />
+              <OrderCard navigation={{}} item={item} key={item.id} />
             )}
             ListEmptyComponent={
               <Text style={ovenScreenStyles.noItemsText}>
@@ -39,7 +42,7 @@ const OvenScreen: React.FC<IOvenScreen> = ({navigation}) => {
             }
             ListFooterComponent={
               <TouchableOpacity
-                onPress={() => navigation.navigate('Order')}
+                onPress={() => navigate('/order')}
                 style={ovenScreenStyles.checkoutBtn}>
                 <Text style={ovenScreenStyles.checkoutText}>
                   {`Go to checkout    $${calculateTotal()}`}

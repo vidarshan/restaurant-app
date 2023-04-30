@@ -10,7 +10,7 @@ import {
 } from './GlobalStyles';
 
 export const accountStyles = StyleSheet.create({
-  viewBg: {backgroundColor: bgColor, minHeight: '100%'},
+  viewBg: {backgroundColor: bgColor, minHeight: '100vh'},
   viewContent: {justifyContent: 'center', alignItems: 'center'},
   avatarContainer: {
     justifyContent: 'center',

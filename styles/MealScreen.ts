@@ -127,4 +127,7 @@ export const mealScreenStyles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
+  iconContainer: {
+    marginRight: 4,
+  },
 });

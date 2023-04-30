@@ -10,7 +10,7 @@ import {
 export const ovenScreenStyles = StyleSheet.create({
   container: {
     backgroundColor: bgColor,
-    minHeight: '100%',
+    minHeight: '100vh',
   },
   item: {
     backgroundColor: cardbgColor,
@@ -29,7 +29,7 @@ export const ovenScreenStyles = StyleSheet.create({
   },
   checkoutBtn: {
     backgroundColor: accentColor,
-    margin: 5,
+    marginTop: 10,
     padding: 10,
     borderRadius: defaultBorderRadius,
   },

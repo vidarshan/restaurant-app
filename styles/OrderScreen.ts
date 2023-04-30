@@ -8,7 +8,7 @@ import {
 
 export const orderScreenStyles = StyleSheet.create({
   container: {
-    minHeight: '100%',
+    minHeight: '100vh',
     backgroundColor: bgColor,
     paddingLeft: 10,
     paddingRight: 10,
