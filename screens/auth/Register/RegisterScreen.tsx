@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -10,16 +10,18 @@ import {
 import {useDispatch, useSelector} from 'react-redux';
 import CustomHeader from '../../../components/CustomHeader';
 import {IRegisterScreen} from '../../../models/IRegisterScreen';
-import {getUser, registerUser, resetError} from '../../../redux/auth/index';
+import {registerUser} from '../../../redux/auth/index';
 import {AppDispatch, RootState} from '../../../redux/store';
 import {authStyles} from '../../../styles/AuthScreens';
-import {unselectedStar} from '../../../styles/GlobalStyles';
-import {setInitialUsers} from '../../../redux/auth/index';
+import {unselectedStar, warningColor} from '../../../styles/GlobalStyles';
 import {customButtonStyles} from '../../../styles/CustomButton';
+import {useNavigate} from 'react-router';
+import {GiFullPizza} from 'react-icons/gi';
 
-const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
+const RegisterScreen: React.FC<IRegisterScreen> = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const {error, user} = useSelector((state: RootState) => state.auth);
+  const {error} = useSelector((state: RootState) => state.auth);
   const [username, setUsername] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
@@ -32,29 +34,11 @@ const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
     setPassword('');
     setConfirmPassword('');
   };
-  useEffect(() => {
-    dispatch(setInitialUsers());
-  }, [user, dispatch]);
-
-  useEffect(() => {
-    dispatch(getUser());
-    if (user.token !== '') {
-      navigation.navigate('Home');
-      dispatch(resetError());
-    } else {
-      navigation.navigate('AuthLogin');
-    }
-  }, [dispatch, navigation, user]);
 
   return (
     <SafeAreaView style={authStyles.authView}>
       <View style={authStyles.authViewPadding}>
-        {/* <Icon
-          style={authStyles.iconSpacing}
-          name="fire"
-          size={60}
-          color={warningColor}
-        /> */}
+        <GiFullPizza size={60} color={warningColor} />
         <CustomHeader title="Create new account" />
         <Text style={authStyles.error}>{error}</Text>
         <TextInput
@@ -116,7 +100,7 @@ const RegisterScreen: React.FC<IRegisterScreen> = ({navigation}) => {
         </TouchableHighlight>
         <TouchableHighlight
           style={customButtonStyles.invertedBtn}
-          onPress={() => navigation.navigate('AuthLogin')}>
+          onPress={() => navigate('/')}>
           <Text style={customButtonStyles.invertedText}>Have an account?</Text>
         </TouchableHighlight>
       </View>

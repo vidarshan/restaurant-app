@@ -1,3 +1,3 @@
 export interface ILoginScreen {
-  navigation: any;
+  navigation?: any;
 }

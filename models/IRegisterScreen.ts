@@ -1,3 +1,3 @@
 export interface IRegisterScreen {
-  navigation: any;
+  navigation?: any;
 }

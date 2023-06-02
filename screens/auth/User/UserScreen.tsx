@@ -1,25 +1,24 @@
 import React, {useEffect} from 'react';
 import {FlatList, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {logout} from '../../../redux/auth';
+import {removeUserFromLocalStorage} from '../../../redux/auth';
 import {AppDispatch, RootState} from '../../../redux/store';
 import {accountStyles} from '../../../styles/AccountScreen';
 import {fontColor} from '../../../styles/GlobalStyles';
 import {ovenScreenStyles} from '../../../styles/OvenScreen';
 import PastOrdersCard from '../../../components/PastOrdersCard';
 import {getOrders} from '../../../redux/orders';
+import {useNavigate} from 'react-router';
 
 const UserScreen = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const {user} = useSelector((state: RootState) => state.auth);
   const {ordersList} = useSelector((state: RootState) => state.orders);
-  console.log(
-    '🚀 ~ file: UserScreen.tsx:15 ~ UserScreen ~ ordersList:',
-    ordersList,
-  );
 
   const onUserLogout = () => {
-    dispatch(logout(user.phone));
+    navigate('/');
+    dispatch(removeUserFromLocalStorage());
   };
 
   useEffect(() => {

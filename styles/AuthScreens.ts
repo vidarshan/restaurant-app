@@ -13,6 +13,7 @@ export const authStyles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
     backgroundColor: bgColor,
+    minHeight: '100vh',
   },
   iconSpacing: {
     marginBottom: 10,

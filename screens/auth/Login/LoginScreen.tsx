@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -6,19 +6,18 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
-// import Icon from 'react-native-vector-icons/FontAwesome5';
 import {useDispatch, useSelector} from 'react-redux';
 import CustomHeader from '../../../components/CustomHeader';
 import {ILoginScreen} from '../../../models/ILoginScreen';
-import {getUser, logInUser, resetError} from '../../../redux/auth';
+import {logInUser} from '../../../redux/auth';
 import {AppDispatch, RootState} from '../../../redux/store';
 import {authStyles} from '../../../styles/AuthScreens';
 import {customButtonStyles} from '../../../styles/CustomButton';
-import {unselectedStar} from '../../../styles/GlobalStyles';
-
-const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
+import {unselectedStar, warningColor} from '../../../styles/GlobalStyles';
+import {GiFullPizza} from 'react-icons/gi';
+const LoginScreen: React.FC<ILoginScreen> = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const {error, user} = useSelector((state: RootState) => state.auth);
+  const {error} = useSelector((state: RootState) => state.auth);
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
 
@@ -28,23 +27,10 @@ const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
     setPassword('');
   };
 
-  useEffect(() => {
-    dispatch(getUser());
-    if (user.token) {
-      navigation.navigate('Home');
-      dispatch(resetError());
-    }
-  }, [dispatch, navigation, user]);
-
   return (
     <SafeAreaView style={authStyles.authView}>
       <View style={authStyles.authViewPadding}>
-        {/* <Icon
-          style={authStyles.iconSpacing}
-          name="hamburger"
-          size={60}
-          color={warningColor}
-        /> */}
+        <GiFullPizza size={60} color={warningColor} />
         <CustomHeader title="Login to your account" />
         <Text style={authStyles.error}>{error}</Text>
         <TextInput
@@ -74,11 +60,6 @@ const LoginScreen: React.FC<ILoginScreen> = ({navigation}) => {
           }
           onPress={() => submitLoginUser()}>
           <Text style={customButtonStyles.defaultText}>Login</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={customButtonStyles.invertedBtn}
-          onPress={() => navigation.navigate('AuthRegister')}>
-          <Text style={customButtonStyles.invertedText}>New User?</Text>
         </TouchableHighlight>
       </View>
     </SafeAreaView>

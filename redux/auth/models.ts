@@ -25,7 +25,7 @@ export type AuthInitialState = {
     id: string;
     username: string;
     phone: string;
-    token: string;
+    token: string | null;
   };
   users: User[];
   loading: boolean;
