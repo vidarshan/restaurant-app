@@ -23,6 +23,7 @@ import {customButtonStyles} from '../../styles/CustomButton';
 import WebHeader from '../../components/WebHeader';
 import {useNavigate} from 'react-router-dom';
 import uuid from 'react-native-uuid';
+import {clearOven} from '../../redux/oven';
 
 const OrderScreen: React.FC<IOrderScreen> = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const OrderScreen: React.FC<IOrderScreen> = () => {
         items: ovenList,
       }),
     );
-
+    dispatch(clearOven());
     navigate('/orderComplete');
   };
 

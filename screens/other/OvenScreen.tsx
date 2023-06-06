@@ -42,13 +42,17 @@ const OvenScreen: React.FC<IOvenScreen> = () => {
               </Text>
             }
             ListFooterComponent={
-              <TouchableOpacity
-                onPress={() => navigate('/order')}
-                style={ovenScreenStyles.checkoutBtn}>
-                <Text style={ovenScreenStyles.checkoutText}>
-                  {`Go to checkout    $${calculateTotal()}`}
-                </Text>
-              </TouchableOpacity>
+              <>
+                {ovenList && ovenList.length >= 1 && (
+                  <TouchableOpacity
+                    onPress={() => navigate('/order')}
+                    style={ovenScreenStyles.checkoutBtn}>
+                    <Text style={ovenScreenStyles.checkoutText}>
+                      {`Go to checkout    $${calculateTotal()}`}
+                    </Text>
+                  </TouchableOpacity>
+                )}
+              </>
             }
           />
         </>

@@ -55,6 +55,14 @@ export const removeOrderFromOven = createAsyncThunk(
   },
 );
 
+export const clearOven = createAsyncThunk('clearOven', async () => {
+  try {
+    await localStorage.removeItem('oven');
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 const initialState = {
   ovenList: [] as IOrder[],
   loading: false,
@@ -130,7 +138,18 @@ const mealsSlice = createSlice({
           state.loading = false;
           state.error = payload.error;
         },
-      );
+      )
+      .addCase(clearOven.pending, state => {
+        state.loading = false;
+      })
+      .addCase(clearOven.fulfilled, state => {
+        state.loading = false;
+        state.ovenList = [];
+      })
+      .addCase(clearOven.rejected, (state, {payload}: PayloadAction<any>) => {
+        state.loading = false;
+        state.error = payload.error;
+      });
   },
 });
 

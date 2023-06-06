@@ -17,7 +17,6 @@ export const getOrders = createAsyncThunk('getOrders', async () => {
 export const addToOrders = createAsyncThunk(
   'addToOven',
   async (orderInfo: IOrderItemDetailsPayload, {}) => {
-    console.log("🚀 ~ file: index.ts:20 ~ orderInfo:", orderInfo)
     try {
       const orderList = await localStorage.getItem('orders');
       const mutableOrderList = JSON.parse(orderList || '[]');
