@@ -100,10 +100,11 @@ export const accountStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'red',
+    backgroundColor: '#2a5200',
     width: 'fit-content',
     padding: 5,
     borderRadius: 5,
+    marginBottom: 20,
   },
   icon: {
     marginRight: 5,
@@ -111,5 +112,24 @@ export const accountStyles = StyleSheet.create({
   date: {
     color: fontColor,
     marginBottom: 5,
+  },
+  itemImage: {
+    width: 30,
+    height: 30,
+    marginTop: 10,
+  },
+  itemContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  itemRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  itemText: {
+    color: '#fff',
   },
 });

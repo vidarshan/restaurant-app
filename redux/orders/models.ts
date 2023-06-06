@@ -13,12 +13,9 @@ export interface IOrderItemDetails {
 }
 
 export interface IOrderItemDetailsPayload {
-  id: string;
-  name: string;
+  id: any;
   price: number;
-  image: any;
-  quantity: number;
-  addOns: IAddOn[];
   date: any;
   status: string;
+  items: any[];
 }

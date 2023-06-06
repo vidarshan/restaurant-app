@@ -22,6 +22,7 @@ import {AppDispatch, RootState} from '../../redux/store';
 import {customButtonStyles} from '../../styles/CustomButton';
 import WebHeader from '../../components/WebHeader';
 import {useNavigate} from 'react-router-dom';
+import uuid from 'react-native-uuid';
 
 const OrderScreen: React.FC<IOrderScreen> = () => {
   const navigate = useNavigate();
@@ -32,20 +33,20 @@ const OrderScreen: React.FC<IOrderScreen> = () => {
   const [paymentMethod, setPaymentMethod] = useState('Cash');
   const {ovenList} = useSelector((state: RootState) => state.oven);
   const onPlaceOrder = () => {
+    let totalPrice = 0;
     ovenList.map(item => {
-      dispatch(
-        addToOrders({
-          id: item.id,
-          price: item.price,
-          name: item.name,
-          image: item.image,
-          quantity: item.quantity,
-          addOns: item.addons,
-          date: Date.now(),
-          status: 'Preparing',
-        }),
-      );
+      totalPrice = totalPrice + item.price;
     });
+    dispatch(
+      addToOrders({
+        id: uuid.v4(),
+        price: totalPrice,
+        date: Date.now(),
+        status: 'Ready',
+        items: ovenList,
+      }),
+    );
+
     navigate('/orderComplete');
   };
 

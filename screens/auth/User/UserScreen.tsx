@@ -9,6 +9,7 @@ import {ovenScreenStyles} from '../../../styles/OvenScreen';
 import PastOrdersCard from '../../../components/PastOrdersCard';
 import {getOrders} from '../../../redux/orders';
 import {useNavigate} from 'react-router';
+import WebHeader from '../../../components/WebHeader';
 
 const UserScreen = () => {
   const navigate = useNavigate();
@@ -25,13 +26,9 @@ const UserScreen = () => {
     dispatch(getOrders());
   }, [dispatch]);
 
-  console.log(
-    '🚀 ~ file: UserScreen.tsx:33 ~ UserScreen ~ ordersList:',
-    ordersList,
-  );
-
   return (
     <View style={accountStyles.viewBg}>
+      <WebHeader type="back" header="Meals" />
       <View>
         <FlatList
           data={ordersList}
@@ -48,7 +45,7 @@ const UserScreen = () => {
               <TextInput
                 style={accountStyles.noFlexInput}
                 value={user?.phone || ''}
-                placeholder="Email"
+                placeholder="Phone number"
                 editable={false}
               />
               <TouchableOpacity
@@ -69,12 +66,9 @@ const UserScreen = () => {
           renderItem={({item}) => (
             <PastOrdersCard
               id={item.id}
-              image={item.image}
-              addOns={item.addOns}
               date={item.date}
-              name={item.name}
+              items={item.items}
               price={item.price}
-              quantity={item.quantity}
               status={item.status}
             />
           )}

@@ -48,6 +48,7 @@ export const logInUser = createAsyncThunk(
       username: 'John Doe',
       password: user.password,
       token: userToken,
+      phone: user.phone,
     };
     await localStorage.setItem('user', JSON.stringify(storageUserObj));
     return {

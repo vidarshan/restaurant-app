@@ -8,32 +8,40 @@ import {fontColor} from '../styles/GlobalStyles';
 
 const PastOrdersCard: React.FC<IPastOrderCard> = ({
   id,
-  image,
-  addOns,
   date,
-  name,
   price,
-  quantity,
   status,
+  items,
 }) => {
-  console.log('🚀 ~ file: PastOrdersCard.tsx:19 ~ addOns:', addOns);
   return (
     <View key={id} style={accountStyles.pastCardContainer}>
       <View style={accountStyles.itemImageColumn}>
-        <Image style={accountStyles.image} source={image} />
         <Text style={accountStyles.itemPrice}>${price}</Text>
       </View>
       <View style={accountStyles.detailsColumn}>
+        <View style={accountStyles.statusBadgeContainer}>
+          <Text style={{color: fontColor}}>{status}</Text>
+        </View>
         <View style={accountStyles.nameStatusRow}>
-          <Text style={accountStyles.itemName}>{name}</Text>
+          <Text style={accountStyles.itemName}>{id}</Text>
         </View>
         <Text style={accountStyles.date}>
           {moment(date).format('YYYY-MM-DD HH:mm A')}
         </Text>
-        <Text style={accountStyles.date}>{id}</Text>
-        <Text style={accountStyles.date}>x {quantity}</Text>
-        <View style={accountStyles.statusBadgeContainer}>
-          <Text style={{color: fontColor}}>{status}</Text>
+        <View>
+          {items.map(item => {
+            return (
+              <View style={accountStyles.itemContainer}>
+                <View style={accountStyles.itemRow}>
+                  {' '}
+                  <Image style={accountStyles.itemImage} source={item.image} />
+                  <Text style={accountStyles.itemText}> {item.name} | </Text>
+                  <Text style={accountStyles.itemText}>{item.price} x </Text>
+                  <Text style={accountStyles.itemText}>{item.quantity}</Text>
+                </View>
+              </View>
+            );
+          })}
         </View>
       </View>
     </View>
