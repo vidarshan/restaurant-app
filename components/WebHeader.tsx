@@ -17,6 +17,7 @@ const WebHeader: FC<IWebHeader> = ({
 }) => {
   const navigate = useNavigate();
   const {ovenList} = useAppSelector(state => state.oven);
+  console.log(ovenList);
   return (
     <>
       {type === 'normal' ? (
@@ -49,8 +50,8 @@ const WebHeader: FC<IWebHeader> = ({
             <TouchableOpacity onPress={() => navigate(rightPath)}>
               <FaShoppingBag color={accentColor} />
               {ovenList && ovenList.length > 0 && (
-                <View>
-                  <Text>{ovenList.length}</Text>
+                <View style={webHeaderStyles.badgeContainer}>
+                  <Text style={webHeaderStyles.badgeText}>{ovenList.length}</Text>
                 </View>
               )}
             </TouchableOpacity>

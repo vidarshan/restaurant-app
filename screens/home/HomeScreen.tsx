@@ -12,7 +12,7 @@ import CustomCard from '../../components/CustomCard';
 import {IHomeScreenProps} from '../../models/IHomeScreen';
 // import {cardbgColor} from '../../styles/GlobalStyles';
 import {homeStyles} from '../../styles/HomeScreen';
-import {RootState} from '../../redux/store';
+import {AppDispatch, RootState} from '../../redux/store';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   setCategories,
@@ -24,9 +24,10 @@ import {meals as mealsListFromDisk} from '../../data/meals';
 import {categories as categoriesFromDisk} from '../../data/categories';
 import WebHeader from '../../components/WebHeader';
 import {FaSearch} from 'react-icons/fa';
+import {getOven} from '../../redux/oven';
 
 const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const {mealsList, categoriesList, selectedCategory} = useSelector(
     (state: RootState) => state.mealsList,
   );
@@ -42,6 +43,7 @@ const HomeScreen: React.FC<IHomeScreenProps> = ({navigation}) => {
   useEffect(() => {
     dispatch(setMeals(mealsListFromDisk));
     dispatch(setCategories(categoriesFromDisk));
+    dispatch(getOven());
   }, [dispatch]);
 
   return (

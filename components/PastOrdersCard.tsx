@@ -26,21 +26,15 @@ const PastOrdersCard: React.FC<IPastOrderCard> = ({
       <View style={accountStyles.detailsColumn}>
         <View style={accountStyles.nameStatusRow}>
           <Text style={accountStyles.itemName}>{name}</Text>
-          <View style={accountStyles.statusBadgeContainer}>
-            {/* <Icon
-              style={accountStyles.icon}
-              name="circle"
-              size={8}
-              color={accentColor}
-            /> */}
-            <Text style={{color: fontColor}}>{status}</Text>
-          </View>
         </View>
         <Text style={accountStyles.date}>
           {moment(date).format('YYYY-MM-DD HH:mm A')}
         </Text>
         <Text style={accountStyles.date}>{id}</Text>
         <Text style={accountStyles.date}>x {quantity}</Text>
+        <View style={accountStyles.statusBadgeContainer}>
+          <Text style={{color: fontColor}}>{status}</Text>
+        </View>
       </View>
     </View>
   );

@@ -12,6 +12,7 @@ const OvenScreen: React.FC<IOvenScreen> = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const {ovenList} = useSelector((state: RootState) => state.oven);
+  console.log('🚀 ~ file: OvenScreen.tsx:15 ~ ovenList:', ovenList);
 
   const calculateTotal = () => {
     let total = 0;

@@ -24,4 +24,19 @@ export const webHeaderStyles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: bgColor,
   },
+  badgeContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: -4,
+    left: 5,
+    width: 15,
+    height: 15,
+    borderRadius: 500,
+    backgroundColor: '#eb4034',
+  },
+  badgeText: {
+    color: '#fff',
+  },
 });

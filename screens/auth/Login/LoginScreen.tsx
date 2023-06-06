@@ -32,6 +32,9 @@ const LoginScreen: React.FC<ILoginScreen> = () => {
       <View style={authStyles.authViewPadding}>
         <GiFullPizza size={60} color={warningColor} />
         <CustomHeader title="Login to your account" />
+        <Text style={{color: '#6e6e6e'}}>
+          Provide any phone and a password for demo purposes
+        </Text>
         <Text style={authStyles.error}>{error}</Text>
         <TextInput
           editable

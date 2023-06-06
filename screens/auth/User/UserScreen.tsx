@@ -25,6 +25,11 @@ const UserScreen = () => {
     dispatch(getOrders());
   }, [dispatch]);
 
+  console.log(
+    '🚀 ~ file: UserScreen.tsx:33 ~ UserScreen ~ ordersList:',
+    ordersList,
+  );
+
   return (
     <View style={accountStyles.viewBg}>
       <View>

@@ -84,7 +84,7 @@ const MealScreen: React.FC<IMealScreen> = () => {
 
   return (
     <View style={mealScreenStyles.mealScreen}>
-      <WebHeader />
+      <WebHeader type="back" header="Meals" />
       <View style={mealScreenStyles.container}>
         <View style={mealScreenStyles.imgContainer}>
           <Image style={mealScreenStyles.img} source={{uri: image}} />

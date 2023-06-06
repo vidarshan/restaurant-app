@@ -100,6 +100,10 @@ export const accountStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: 'red',
+    width: 'fit-content',
+    padding: 5,
+    borderRadius: 5,
   },
   icon: {
     marginRight: 5,
