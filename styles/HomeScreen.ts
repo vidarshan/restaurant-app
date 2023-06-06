@@ -1,16 +1,18 @@
 import {StyleSheet} from 'react-native';
 import {
-  accentColor,
   bgColor,
+  accentColor,
   cardbgColor,
   chipBackgroundColor,
   fontColor,
 } from './GlobalStyles';
+import {getPlatform} from '../utils';
 
 export const homeStyles = (veganIconBorderColor?: string) =>
   StyleSheet.create({
     container: {
       flex: 1,
+      minHeight: getPlatform() === 'web' ? '100vh' : 0,
       marginTop: 0,
       backgroundColor: bgColor,
     },

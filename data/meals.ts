@@ -39,7 +39,7 @@ export const meals = [
     price: 4.5,
     foodType: 'Sandwitch',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779024/restaurant/sandwitch1_all396.png',
     vegan: false,
     orders: 3,
     rating: 5.0,
@@ -63,7 +63,7 @@ export const meals = [
     price: 5.0,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger_vcn9kn.png',
     vegan: false,
     orders: 7,
     rating: 4.8,
@@ -87,7 +87,7 @@ export const meals = [
     price: 4.0,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger_vcn9kn.png',
     vegan: false,
     orders: 1,
     rating: 4.5,
@@ -111,7 +111,7 @@ export const meals = [
     price: 10.0,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779013/restaurant/burger3_xpf4t5.png',
     vegan: false,
     orders: 7,
     rating: 4.2,
@@ -135,7 +135,7 @@ export const meals = [
     price: 12.0,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779013/restaurant/burger4_qi4si1.png',
     vegan: false,
     orders: 8,
     rating: 5.0,
@@ -159,7 +159,7 @@ export const meals = [
     price: 15.0,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779013/restaurant/burger5_eizljg.png',
     vegan: false,
     orders: 2,
     rating: 4.8,
@@ -183,7 +183,7 @@ export const meals = [
     price: 17.0,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779013/restaurant/burger8_kicx0w.png',
     vegan: false,
     orders: 7,
     rating: 4.5,
@@ -207,7 +207,7 @@ export const meals = [
     price: 8.5,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779014/restaurant/burger6_txldks.png',
     vegan: false,
     orders: 5,
     rating: 4.8,
@@ -231,7 +231,7 @@ export const meals = [
     price: 9.5,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779014/restaurant/burger7_wjpvr8.png',
     vegan: false,
     orders: 7,
     rating: 5.0,
@@ -255,7 +255,7 @@ export const meals = [
     price: 3.5,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779014/restaurant/burger9_kamked.png',
     vegan: false,
     orders: 7,
     rating: 4.9,
@@ -279,7 +279,7 @@ export const meals = [
     price: 10.5,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779014/restaurant/burger11_voxgmp.png',
     vegan: false,
     orders: 7,
     rating: 4.6,
@@ -303,7 +303,7 @@ export const meals = [
     price: 9.5,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779015/restaurant/burger13_t9eu8w.png',
     vegan: false,
     orders: 1,
     rating: 4.8,
@@ -327,7 +327,7 @@ export const meals = [
     price: 7.0,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779015/restaurant/burger10_xjx1cx.png',
     vegan: false,
     orders: 3,
     rating: 4.4,
@@ -351,7 +351,7 @@ export const meals = [
     price: 7.0,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779015/restaurant/burger12_tn5s3h.png',
     vegan: false,
     orders: 7,
     rating: 4.4,
@@ -375,7 +375,7 @@ export const meals = [
     foodType: 'Burger',
     price: 4.5,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779015/restaurant/burger15_uhako7.png',
     vegan: false,
     orders: 7,
     rating: 4.8,
@@ -399,7 +399,7 @@ export const meals = [
     price: 3.25,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779016/restaurant/burger16_f3ilfp.png',
     vegan: false,
     orders: 7,
     rating: 4.0,
@@ -423,7 +423,7 @@ export const meals = [
     price: 5.25,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779016/restaurant/burger14_wwp0zx.png',
     vegan: false,
     orders: 7,
     rating: 4.8,
@@ -447,7 +447,7 @@ export const meals = [
     price: 6.75,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779013/restaurant/burger5_eizljg.png',
     vegan: false,
     orders: 7,
     rating: 4.6,
@@ -471,7 +471,7 @@ export const meals = [
     price: 3.5,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779014/restaurant/burger6_txldks.png',
     vegan: false,
     orders: 7,
     rating: 4.6,
@@ -495,7 +495,7 @@ export const meals = [
     price: 7.5,
     foodType: 'Burger',
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779015/restaurant/burger15_uhako7.png',
     vegan: false,
     orders: 7,
     rating: 4.2,
@@ -543,7 +543,7 @@ export const meals = [
     ],
     price: 9.5,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779016/restaurant/burrito1_axzbnq.png',
     vegan: false,
     orders: 7,
     rating: 4.7,
@@ -567,7 +567,7 @@ export const meals = [
     ],
     price: 9.25,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779017/restaurant/buritto4_a8uai0.png',
     vegan: false,
     orders: 7,
     rating: 4.7,
@@ -591,7 +591,7 @@ export const meals = [
     ],
     price: 10.0,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779017/restaurant/burrito_t03va9.png',
     vegan: false,
     orders: 7,
     rating: 4.7,
@@ -615,7 +615,7 @@ export const meals = [
     ],
     price: 9.0,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779018/restaurant/burrito3_mrhgkx.png',
     vegan: false,
     orders: 7,
     rating: 4.7,
@@ -639,7 +639,7 @@ export const meals = [
     ],
     price: 10.75,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779019/restaurant/burrito6_hup0cp.png',
     vegan: false,
     orders: 7,
     rating: 4.7,
@@ -663,7 +663,7 @@ export const meals = [
     ],
     price: 6.0,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779023/restaurant/burrito5_dokqga.png',
     vegan: false,
     orders: 7,
     rating: 4.7,
@@ -687,7 +687,7 @@ export const meals = [
     ],
     price: 7.0,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779027/restaurant/taco2_xawst3.png',
     vegan: false,
     orders: 7,
     rating: 4.7,
@@ -711,7 +711,7 @@ export const meals = [
     ],
     price: 6.25,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779027/restaurant/taco1_j9xxdy.png',
     vegan: false,
     orders: 7,
     rating: 4.7,
@@ -735,7 +735,7 @@ export const meals = [
     ],
     price: 6.75,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779028/restaurant/taco3_zsgt4y.png',
     vegan: false,
     orders: 7,
     rating: 4.7,
@@ -759,7 +759,7 @@ export const meals = [
     ],
     price: 6.0,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779027/restaurant/taco4_nnvlza.png',
     vegan: false,
     orders: 7,
     rating: 4.7,
@@ -783,7 +783,7 @@ export const meals = [
     ],
     price: 11.0,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779020/restaurant/chicken3_negqim.png',
     vegan: false,
     orders: 7,
     rating: 4.3,
@@ -807,7 +807,7 @@ export const meals = [
     ],
     price: 12.5,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779021/restaurant/chicken2_ial2bm.png',
     vegan: false,
     orders: 7,
     rating: 4.9,
@@ -831,7 +831,7 @@ export const meals = [
     ],
     price: 13.25,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779020/restaurant/chicken4_kfzmlu.png',
     vegan: false,
     orders: 7,
     rating: 4.6,
@@ -855,7 +855,7 @@ export const meals = [
     ],
     price: 5.75,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779019/restaurant/chicken1_sbnkst.png',
     vegan: false,
     orders: 7,
     rating: 4.8,
@@ -881,7 +881,7 @@ export const meals = [
     ],
     price: 20.0,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779024/restaurant/pizza4_sc6ou1.png',
     vegan: false,
     orders: 6,
     rating: 4.8,
@@ -907,7 +907,7 @@ export const meals = [
     ],
     price: 30.0,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779023/restaurant/pizza1_fq84xu.png',
     vegan: false,
     orders: 10,
     rating: 4.0,
@@ -933,7 +933,7 @@ export const meals = [
     ],
     price: 40.0,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779022/restaurant/pizza2_kgbjnu.png',
     vegan: true,
     orders: 6,
     rating: 4.8,
@@ -959,7 +959,7 @@ export const meals = [
     ],
     price: 35.5,
     image:
-      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779012/restaurant/burger1_cu7hm6.png',
+      'https://res.cloudinary.com/dury4s2jk/image/upload/v1682779022/restaurant/pizza_omu9oi.png',
     vegan: true,
     orders: 6,
     rating: 4.8,
