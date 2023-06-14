@@ -1,7 +1,7 @@
 <h1 align='center'>🍕 Meal Central</h1>
 
 <h5 align='center'>An app based meal shop</h5>
-<h5 align='center'>🌎https/</h5>
+<h5 align='center'>🌎 https://project-preview.vercel.app/</h5>
 
 ![Tech Stop Mobile](https://github.com/vidarshan/restaurant-app/assets/48169745/86be9cff-f2b3-4cc4-a409-5d4a927df899)
 
